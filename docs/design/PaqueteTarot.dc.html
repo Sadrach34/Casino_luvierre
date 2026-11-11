@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Paquete de tarot</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#000}
+.stage{position:relative;width:1280px;height:720px;overflow:hidden;box-sizing:border-box;font-family:'Pixelify Sans',ui-monospace,monospace;color:#dfeae4;background-color:#0a0806;background-image:url("/_blob/9eb210e033e27fef99b3b1dc11476e9d"),linear-gradient(45deg,#120e08 25%,transparent 25%,transparent 75%,#120e08 75%),linear-gradient(45deg,#120e08 25%,transparent 25%,transparent 75%,#120e08 75%);background-size:256px 256px,64px 64px,64px 64px;background-position:0 0,0 0,32px 32px;animation:bgmove 14s linear infinite}
+@keyframes bgmove{to{background-position:256px 256px,256px 256px,288px 288px}}
+.stage::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:40;background:radial-gradient(ellipse at 50% 50%,transparent 60%,rgba(0,0,0,.55) 100%)}
+.stage h1,.stage h2,.stage h3,.stage p{margin:0;font-weight:inherit}
+.bunting{position:absolute;top:0;left:0;right:0;z-index:3;height:24px;background:linear-gradient(#cf9b38,#cf9b38) 0 0/100% 6px no-repeat,conic-gradient(from -45deg at bottom,#cf9b38 90deg,transparent 0) 0 6px/32px 18px repeat-x}
+.panel{background:#15100a;border:3px solid #cf9b38;box-shadow:0 0 0 3px #000,6px 6px 0 3px rgba(0,0,0,.7)}
+.panel-q{background:#15100a;border:3px solid #7a5a1e;box-shadow:0 0 0 3px #000,5px 5px 0 3px rgba(0,0,0,.6)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;box-sizing:border-box;font-family:inherit;font-weight:600;font-size:22px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:0;cursor:pointer;background:#cf9b38;color:#0a0806;box-shadow:inset -4px -4px 0 #9a6f1f,inset 4px 4px 0 #f0cf7a,0 0 0 3px #000,5px 5px 0 3px rgba(0,0,0,.7)}
+.btn:hover{background:#e0ad46}
+.btn:focus-visible{outline:3px solid #dfeae4;outline-offset:5px}
+.btn-ghost{background:#211910;color:#ecc062;box-shadow:inset -4px -4px 0 #0a0806,inset 4px 4px 0 #3a2c18,0 0 0 3px #cf9b38,5px 5px 0 3px rgba(0,0,0,.7)}
+.btn-ghost:hover{background:#2b2014}
+.btn-wine{background:#7b2536;color:#f3c9c2;box-shadow:inset -4px -4px 0 #4f1623,inset 4px 4px 0 #a33a4f,0 0 0 3px #000,5px 5px 0 3px rgba(0,0,0,.7)}
+.btn-wine:hover{background:#8d2c40}
+.btn[disabled]{cursor:default;background:#211910;color:#b9a780;box-shadow:inset -4px -4px 0 #0a0806,inset 4px 4px 0 #2c2216,0 0 0 3px #4a3a1c}
+.label{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#b9a780}
+.coin{display:inline-block;width:22px;height:22px;flex:none;background:#ecc062;box-shadow:inset 0 0 0 4px #9a6f1f;clip-path:polygon(30% 0,70% 0,100% 30%,100% 70%,70% 100%,30% 100%,0 70%,0 30%)}
+.spr{position:relative;flex:none;display:block;width:calc(48px*var(--s,3));height:calc(64px*var(--s,3));background-image:var(--spr);background-repeat:no-repeat;background-size:calc(var(--sw)*var(--s,3)) calc(var(--sh)*var(--s,3));background-position:calc(var(--col,0)*-48px*var(--s,3)) calc(var(--row,0)*-64px*var(--s,3));image-rendering:pixelated;filter:drop-shadow(4px 4px 0 rgba(0,0,0,.65))}
+.cd{--spr:url("/_blob/c3fdfeb0d0abb6a3af9bd7e5a721b005");--sw:624px;--sh:256px}
+.oscuro .cd{--spr:url("/_blob/f139bd582298bcde19d0c4ec899fae94")}
+.jk{--spr:url("/_blob/e43ea6237996aacaca58fe6b0f8bb5c0");--sw:96px;--sh:64px}
+.oscuro .jk{--spr:url("/_blob/507f130c5d0337cce8a1efee24cdb017")}
+.c0{--col:0}.c1{--col:1}
+.poly::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,#ff4d7d,#ffc247,#5cf2a0,#4db8ff,#b56cff,#ff4d7d);background-size:200% 200%;mix-blend-mode:color;opacity:.85;-webkit-mask-image:var(--spr);mask-image:var(--spr);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:calc(var(--sw)*var(--s,3)) calc(var(--sh)*var(--s,3));mask-size:calc(var(--sw)*var(--s,3)) calc(var(--sh)*var(--s,3));-webkit-mask-position:calc(var(--col,0)*-48px*var(--s,3)) calc(var(--row,0)*-64px*var(--s,3));mask-position:calc(var(--col,0)*-48px*var(--s,3)) calc(var(--row,0)*-64px*var(--s,3));animation:poly 3.2s ease-in-out infinite alternate;pointer-events:none}
+@keyframes poly{from{background-position:0 0}to{background-position:100% 100%}}
+.neg{display:block;filter:invert(1) hue-rotate(180deg)}
+.nn{display:block}
+.seal{position:absolute;left:calc(-5px*var(--s,3));bottom:calc(-5px*var(--s,3));width:calc(16px*var(--s,3));height:calc(16px*var(--s,3));display:flex;align-items:center;justify-content:center;background:#0a0806;clip-path:polygon(30% 0,70% 0,100% 30%,100% 70%,70% 100%,30% 100%,0 70%,0 30%);z-index:2}
+.seal::before{content:"";position:absolute;inset:calc(2px*var(--s,3));background:#5fbf6a;clip-path:polygon(30% 0,70% 0,100% 30%,100% 70%,70% 100%,30% 100%,0 70%,0 30%)}
+.seal svg{position:relative;width:60%;height:60%}
+.jbar{position:absolute;z-index:20;top:36px;left:24px;display:flex;align-items:center;gap:14px;padding:8px 30px 8px 16px;box-sizing:border-box;height:112px}
+.jcount{position:absolute;top:4px;right:5px;font-size:12px;line-height:1;color:#ecc062}
+.cbar{position:absolute;z-index:20;top:36px;left:432px;height:112px;box-sizing:border-box;display:flex;align-items:center;gap:10px;padding:8px 14px}
+.tmini{width:60px;height:80px;flex:none;box-sizing:border-box;border:2px dashed #8a63c4;background:repeating-linear-gradient(45deg,#1d1236 0 8px,#170e2b 8px 16px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;text-align:center;color:#c9a9ff;font-size:10px;line-height:1.1;filter:drop-shadow(3px 3px 0 rgba(0,0,0,.65))}
+.tmini b{font-weight:400;font-size:9px;letter-spacing:.12em;color:#8a63c4}
+.cempty{width:60px;height:80px;flex:none;box-sizing:border-box;border:2px dashed #4a3a1c;display:flex;align-items:center;justify-content:center;color:#7a5a1e;font-size:13px}
+.jhead{display:flex;flex-direction:column;gap:2px;width:64px}
+.jslots{display:flex;gap:10px}
+.js{position:relative;width:60px;height:80px;flex:none}
+.jb{display:block;padding:0;margin:0;border:0;background:none;cursor:pointer;transition:transform .15s}
+.jb:focus-visible{outline:3px solid #dfeae4;outline-offset:4px}
+.jb.sel{transform:translateY(-8px);filter:drop-shadow(3px 0 0 #ecc062) drop-shadow(-3px 0 0 #ecc062) drop-shadow(0 3px 0 #ecc062) drop-shadow(0 -3px 0 #ecc062)}
+.jempty{width:60px;height:80px;box-sizing:border-box;border:2px dashed #4a3a1c;display:flex;align-items:center;justify-content:center;color:#7a5a1e;font-size:13px}
+.jpop{position:absolute;z-index:25;top:98px;left:50%;transform:translateX(-50%);width:216px;box-sizing:border-box;padding:10px 12px 12px;display:flex;flex-direction:column;gap:6px;border-color:#ecc062}
+.jpop::before{content:"";position:absolute;top:-10px;left:calc(50% - 7px);width:14px;height:14px;background:#15100a;border-left:3px solid #ecc062;border-top:3px solid #ecc062;transform:rotate(45deg)}
+.ed{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#c9a9ff}
+.dk{display:block;padding:0;margin:0;border:0;background:none;cursor:pointer;transition:transform .15s}
+.dk:focus-visible{outline:3px solid #dfeae4;outline-offset:4px}
+.deck > .dk{animation:wave2 3.2s ease-in-out infinite}
+.deck > .dk:nth-child(2){animation-delay:-.35s}.deck > .dk:nth-child(3){animation-delay:-.7s}.deck > .dk:nth-child(4){animation-delay:-1.05s}.deck > .dk:nth-child(5){animation-delay:-1.4s}.deck > .dk:nth-child(6){animation-delay:-1.75s}.deck > .dk:nth-child(7){animation-delay:-2.1s}.deck > .dk:nth-child(8){animation-delay:-2.45s}.deck > .dk:nth-child(9){animation-delay:-2.8s}.deck > .dk:nth-child(10){animation-delay:-3.15s}
+@keyframes wave2{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.deck > .dk.mk{animation:none;transform:translateY(-14px) scale(1.08);filter:drop-shadow(3px 0 0 #ecc062) drop-shadow(-3px 0 0 #ecc062) drop-shadow(0 3px 0 #ecc062) drop-shadow(0 -3px 0 #ecc062)}
+.deck > .dk.gone{animation:none;opacity:.12;cursor:default}
+.cell{position:relative;display:flex;flex-direction:column;align-items:center;min-width:0}
+.deck{--hx:974px;--step:112px;--hy:325px}
+.deck.home > .dk{transform-origin:0 0;pointer-events:none;animation:tohome .45s ease-in forwards;animation-delay:calc(var(--i)*.12s + .9s)}
+@keyframes tohome{85%{transform:translate(calc(var(--hx) - var(--i)*var(--step)),var(--hy)) scale(.75);opacity:1}100%{transform:translate(calc(var(--hx) - var(--i)*var(--step)),var(--hy)) scale(.75);opacity:0}}
+.bk{--spr:url("/_blob/b787f4a8389bb82c9420ebd0935a4b56");--sw:240px;--sh:64px;--col:1;--row:0}
+.dpile{position:absolute;z-index:8;right:30px;bottom:96px;width:80px;height:106px;display:block;text-decoration:none}
+.dpile:focus-visible{outline:3px solid #dfeae4;outline-offset:6px}
+.dcount{position:absolute;right:-8px;bottom:-10px;background:#cf9b38;color:#0a0806;font-size:16px;font-weight:700;line-height:1;padding:3px 6px;border:2px solid #000}
+.fc{display:block;padding:0;margin:0;border:0;background:none;cursor:pointer;font-family:inherit;color:inherit;animation:wave 2.8s ease-in-out infinite;transition:transform .18s ease-out}
+.fc:focus-visible{outline:3px solid #dfeae4;outline-offset:6px}
+.cell:nth-child(2) .fc{animation-delay:-.45s}
+.cell:nth-child(3) .fc{animation-delay:-.9s}
+.cell:nth-child(4) .fc{animation-delay:-1.35s}
+.cell:nth-child(5) .fc{animation-delay:-1.8s}
+.cell:nth-child(6) .fc{animation-delay:-2.25s}
+@keyframes wave{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.fc.on{animation:none;transform:translateY(-8px) scale(1.15);filter:drop-shadow(3px 0 0 #ecc062) drop-shadow(-3px 0 0 #ecc062) drop-shadow(0 3px 0 #ecc062) drop-shadow(0 -3px 0 #ecc062)}
+.fc.out{animation:discard .8s ease-in forwards;pointer-events:none}
+.fc.gone{animation:none;visibility:hidden}
+@keyframes discard{0%{transform:translateY(-8px) scale(1.15);opacity:1}100%{transform:translate(900px,-180px) rotate(40deg) scale(.9);opacity:0;visibility:hidden}}
+.tph{width:96px;height:156px;box-sizing:border-box;border:3px dashed #8a63c4;background:repeating-linear-gradient(45deg,#1d1236 0 10px,#170e2b 10px 20px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:6px;text-align:center;color:#c9a9ff;font-size:13px;line-height:1.15;filter:drop-shadow(4px 4px 0 rgba(0,0,0,.65))}
+.tph b{font-weight:400;font-size:11px;letter-spacing:.14em;color:#8a63c4}
+.info{position:relative;margin-top:28px;width:100%;box-sizing:border-box;padding:12px 14px 14px;display:flex;flex-direction:column;gap:5px;border-color:#ecc062}
+.info::before{content:"";position:absolute;top:-10px;left:calc(50% - 7px);width:14px;height:14px;background:#15100a;border-left:3px solid #ecc062;border-top:3px solid #ecc062;transform:rotate(45deg)}
+.nm{font-size:22px;font-weight:700;line-height:1.05}
+.fx{font-size:16px;line-height:1.2;color:#ecc062}
+.ibtn{min-height:42px;height:42px;font-size:17px;padding:0 10px;margin-top:4px}
+.gear{position:absolute;z-index:30;right:24px;bottom:22px;width:60px;height:60px;min-height:60px;padding:0;flex-direction:column;gap:3px}
+.gear svg{width:24px;height:24px}
+.gear .k{font-size:11px;letter-spacing:.12em;line-height:1}
+@media (prefers-reduced-motion:reduce){.stage,.poly::after,.fc{animation:none}}
+</style>
+</helmet>
+<div class="stage {{deckCls}}">
+  <div class="bunting"></div>
+
+  <!-- Jokers visibles: un tarot puede afectarlos (Policromo, Negativo…) y se pueden vender -->
+  <div class="panel-q jbar" role="group" aria-label="Tus jokers">
+    <span class="jcount">{{count}}</span>
+    <div class="jslots">
+      <div class="js">
+        <sc-if value="{{j0.has}}" hint-placeholder-val="{{true}}"><button type="button" class="{{j0.cls}}" onClick="{{j0.click}}" aria-label="{{j0.aria}}"><span class="{{j0.wrap}}"><span class="{{j0.spr}}" style="--s:1.25"></span></span></button></sc-if>
+        <sc-if value="{{j0.empty}}" hint-placeholder-val="{{false}}"><span class="jempty">Libre</span></sc-if>
+        <sc-if value="{{j0.sel}}" hint-placeholder-val="{{false}}"><div class="panel-q jpop"><span style="font-size:18px;font-weight:700;line-height:1.05">{{j0.n}}</span><span style="font-size:14px;color:#ecc062;line-height:1.15">{{j0.e}}</span><sc-if value="{{j0.hasEd}}" hint-placeholder-val="{{false}}"><span class="ed">{{j0.edTxt}}</span></sc-if><button class="btn btn-wine" type="button" onClick="{{j0.sell}}" style="min-height:40px;height:40px;font-size:17px;padding:0 12px">Vender <span class="coin" aria-hidden="true" style="width:16px;height:16px"></span>+{{j0.p}}</button></div></sc-if>
+      </div>
+      <div class="js">
+        <sc-if value="{{j1.has}}" hint-placeholder-val="{{true}}"><button type="button" class="{{j1.cls}}" onClick="{{j1.click}}" aria-label="{{j1.aria}}"><span class="{{j1.wrap}}"><span class="{{j1.spr}}" style="--s:1.25"></span></span></button></sc-if>
+        <sc-if value="{{j1.empty}}" hint-placeholder-val="{{false}}"><span class="jempty">Libre</span></sc-if>
+        <sc-if value="{{j1.sel}}" hint-placeholder-val="{{false}}"><div class="panel-q jpop"><span style="font-size:18px;font-weight:700;line-height:1.05">{{j1.n}}</span><span style="font-size:14px;color:#ecc062;line-height:1.15">{{j1.e}}</span><sc-if value="{{j1.hasEd}}" hint-placeholder-val="{{false}}"><span class="ed">{{j1.edTxt}}</span></sc-if><button class="btn btn-wine" type="button" onClick="{{j1.sell}}" style="min-height:40px;height:40px;font-size:17px;padding:0 12px">Vender <span class="coin" aria-hidden="true" style="width:16px;height:16px"></span>+{{j1.p}}</button></div></sc-if>
+      </div>
+      <div class="js">
+        <sc-if value="{{j2.has}}" hint-placeholder-val="{{true}}"><button type="button" class="{{j2.cls}}" onClick="{{j2.click}}" aria-label="{{j2.aria}}"><span class="{{j2.wrap}}"><span class="{{j2.spr}}" style="--s:1.25"></span></span></button></sc-if>
+        <sc-if value="{{j2.empty}}" hint-placeholder-val="{{false}}"><span class="jempty">Libre</span></sc-if>
+        <sc-if value="{{j2.sel}}" hint-placeholder-val="{{false}}"><div class="panel-q jpop"><span style="font-size:18px;font-weight:700;line-height:1.05">{{j2.n}}</span><span style="font-size:14px;color:#ecc062;line-height:1.15">{{j2.e}}</span><sc-if value="{{j2.hasEd}}" hint-placeholder-val="{{false}}"><span class="ed">{{j2.edTxt}}</span></sc-if><button class="btn btn-wine" type="button" onClick="{{j2.sell}}" style="min-height:40px;height:40px;font-size:17px;padding:0 12px">Vender <span class="coin" aria-hidden="true" style="width:16px;height:16px"></span>+{{j2.p}}</button></div></sc-if>
+      </div>
+      <div class="js">
+        <sc-if value="{{j3.has}}" hint-placeholder-val="{{true}}"><button type="button" class="{{j3.cls}}" onClick="{{j3.click}}" aria-label="{{j3.aria}}"><span class="{{j3.wrap}}"><span class="{{j3.spr}}" style="--s:1.25"></span></span></button></sc-if>
+        <sc-if value="{{j3.empty}}" hint-placeholder-val="{{false}}"><span class="jempty">Libre</span></sc-if>
+        <sc-if value="{{j3.sel}}" hint-placeholder-val="{{false}}"><div class="panel-q jpop"><span style="font-size:18px;font-weight:700;line-height:1.05">{{j3.n}}</span><span style="font-size:14px;color:#ecc062;line-height:1.15">{{j3.e}}</span><sc-if value="{{j3.hasEd}}" hint-placeholder-val="{{false}}"><span class="ed">{{j3.edTxt}}</span></sc-if><button class="btn btn-wine" type="button" onClick="{{j3.sell}}" style="min-height:40px;height:40px;font-size:17px;padding:0 12px">Vender <span class="coin" aria-hidden="true" style="width:16px;height:16px"></span>+{{j3.p}}</button></div></sc-if>
+      </div>
+      <div class="js">
+        <sc-if value="{{j4.has}}" hint-placeholder-val="{{true}}"><button type="button" class="{{j4.cls}}" onClick="{{j4.click}}" aria-label="{{j4.aria}}"><span class="{{j4.wrap}}"><span class="{{j4.spr}}" style="--s:1.25"></span></span></button></sc-if>
+        <sc-if value="{{j4.empty}}" hint-placeholder-val="{{false}}"><span class="jempty">Libre</span></sc-if>
+        <sc-if value="{{j4.sel}}" hint-placeholder-val="{{false}}"><div class="panel-q jpop"><span style="font-size:18px;font-weight:700;line-height:1.05">{{j4.n}}</span><span style="font-size:14px;color:#ecc062;line-height:1.15">{{j4.e}}</span><sc-if value="{{j4.hasEd}}" hint-placeholder-val="{{false}}"><span class="ed">{{j4.edTxt}}</span></sc-if><button class="btn btn-wine" type="button" onClick="{{j4.sell}}" style="min-height:40px;height:40px;font-size:17px;padding:0 12px">Vender <span class="coin" aria-hidden="true" style="width:16px;height:16px"></span>+{{j4.p}}</button></div></sc-if>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-q cbar" role="group" aria-label="Tus consumibles: El Trébol y un espacio libre"><span class="tmini" role="img" aria-label="Tarot El Trébol, imagen pendiente"><b>IMAGEN</b>El Trébol</span><span class="cempty">Libre</span></div>
+
+  <header style="position:absolute;z-index:4;top:40px;left:616px;right:24px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px">
+    <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px">
+      <span class="label">{{status}}</span>
+      <h1 style="font-size:30px;line-height:1.05;font-weight:700;color:#cf9b38;text-shadow:0 4px 0 #7a5a1e,5px 7px 0 #000">PAQUETE DE TAROT</h1>
+    </div>
+    <div style="display:flex;align-items:center;gap:16px;flex:none">
+      <a class="btn btn-ghost" href="Tienda.dc.html" style="width:140px;height:48px;min-height:48px;font-size:20px">{{skipTxt}}</a>
+      <div class="panel" style="display:flex;align-items:center;gap:10px;padding:0 18px;height:48px;box-sizing:border-box">
+        <span class="coin" aria-hidden="true"></span>
+        <span style="font-size:28px;font-weight:700;color:#ecc062">{{coins}}</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Tu mazo: marca las cartas a las que se aplicará el tarot -->
+  <section aria-label="Cartas de tu mazo" style="position:absolute;z-index:5;top:160px;left:24px;right:24px">
+    <div style="display:flex;align-items:center;justify-content:center;gap:16px">
+      <span class="label">Tu mazo · toca para marcar</span>
+      <span style="font-size:16px;color:#ecc062">{{markedTxt}}</span>
+    </div>
+    <div class="{{deckCls}}" style="display:flex;justify-content:center;gap:16px;margin-top:16px">
+      <button type="button" style="--i:0" class="{{d0.cls}}" onClick="{{d0.click}}" aria-label="{{d0.aria}}"><span class="{{d0.spr}}" style="--s:2;--col:12;--row:2"><sc-if value="{{d0.seal}}" hint-placeholder-val="{{false}}"><span class="seal" aria-hidden="true"><svg viewBox="0 0 8 8" fill="#0a0806"><circle cx="2.2" cy="2.2" r="1.9"></circle><circle cx="5.8" cy="2.2" r="1.9"></circle><circle cx="2.2" cy="5.8" r="1.9"></circle><circle cx="5.8" cy="5.8" r="1.9"></circle><rect x="3" y="3" width="2" height="2"></rect></svg></span></sc-if></span></button>
+      <button type="button" style="--i:1" class="{{d1.cls}}" onClick="{{d1.click}}" aria-label="{{d1.aria}}"><span class="{{d1.spr}}" style="--s:2;--col:6;--row:3"><sc-if value="{{d1.seal}}" hint-placeholder-val="{{false}}"><span class="seal" aria-hidden="true"><svg viewBox="0 0 8 8" fill="#0a0806"><circle cx="2.2" cy="2.2" r="1.9"></circle><circle cx="5.8" cy="2.2" r="1.9"></circle><circle cx="2.2" cy="5.8" r="1.9"></circle><circle cx="5.8" cy="5.8" r="1.9"></circle><rect x="3" y="3" width="2" height="2"></rect></svg></span></sc-if></span></button>
+      <button type="button" style="--i:2" class="{{d2.cls}}" onClick="{{d2.click}}" aria-label="{{d2.aria}}"><span class="{{d2.spr}}" style="--s:2;--col:0;--row:0"><sc-if value="{{d2.seal}}" hint-placeholder-val="{{false}}"><span class="seal" aria-hidden="true"><svg viewBox="0 0 8 8" fill="#0a0806"><circle cx="2.2" cy="2.2" r="1.9"></circle><circle cx="5.8" cy="2.2" r="1.9"></circle><circle cx="2.2" cy="5.8" r="1.9"></circle><circle cx="5.8" cy="5.8" r="1.9"></circle><rect x="3" y="3" width="2" height="2"></rect></svg></span></sc-if></span></button>
+      <button type="button" style="--i:3" class="{{d3.cls}}" onClick="{{d3.click}}" aria-label="{{d3.aria}}"><span class="{{d3.spr}}" style="--s:2;--col:9;--row:1"><sc-if value="{{d3.seal}}" hint-placeholder-val="{{false}}"><span class="seal" aria-hidden="true"><svg viewBox="0 0 8 8" fill="#0a0806"><circle cx="2.2" cy="2.2" r="1.9"></circle><circle cx="5.8" cy="2.2" r="1.9"></circle><circle cx="2.2" cy="5.8" r="1.9"></circle><circle cx="5.8" cy="5.8" r="1.9"></circle><rect x="3" y="3" width="2" height="2"></rect></svg></span></sc-if></span></button>
+      <button type="button" style="--i:4" class="{{d4.cls}}" onClick="{{d4.click}}" aria-label="{{d4.aria}}"><span class="{{d4.spr}}" style="--s:2;--col:12;--row:2"><sc-if value="{{d4.seal}}" hint-placeholder-val="{{false}}"><span class="seal" aria-hidden="true"><svg viewBox="0 0 8 8" fill="#0a0806"><circle cx="2.2" cy="2.2" r="1.9"></circle><circle cx="5.8" cy="2.2" r="1.9"></circle><circle cx="2.2" cy="5.8" r="1.9"></circle><circle cx="5.8" cy="5.8" r="1.9"></circle><rect x="3" y="3" width="2" height="2"></rect></svg></span></sc-if></span></button>
+      <button type="button" style="--i:5" class="{{d5.cls}}" onClick="{{d5.click}}" aria-label="{{d5.aria}}"><span class="{{d5.spr}}" style="--s:2;--col:2;--row:0"><sc-if value="{{d5.seal}}" hint-placeholder-val="{{false}}"><span class="seal" aria-hidden="true"><svg viewBox="0 0 8 8" fill="#0a0806"><circle cx="2.2" cy="2.2" r="1.9"></circle><circle cx="5.8" cy="2.2" r="1.9"></circle><circle cx="2.2" cy="5.8" r="1.9"></circle><circle cx="5.8" cy="5.8" r="1.9"></circle><rect x="3" y="3" width="2" height="2"></rect></svg></span></sc-if></span></button>
+      <button type="button" style="--i:6" class="{{d6.cls}}" onClick="{{d6.click}}" aria-label="{{d6.aria}}"><span class="{{d6.spr}}" style="--s:2;--col:11;--row:3"><sc-if value="{{d6.seal}}" hint-placeholder-val="{{false}}"><span class="seal" aria-hidden="true"><svg viewBox="0 0 8 8" fill="#0a0806"><circle cx="2.2" cy="2.2" r="1.9"></circle><circle cx="5.8" cy="2.2" r="1.9"></circle><circle cx="2.2" cy="5.8" r="1.9"></circle><circle cx="5.8" cy="5.8" r="1.9"></circle><rect x="3" y="3" width="2" height="2"></rect></svg></span></sc-if></span></button>
+      <button type="button" style="--i:7" class="{{d7.cls}}" onClick="{{d7.click}}" aria-label="{{d7.aria}}"><span class="{{d7.spr}}" style="--s:2;--col:8;--row:2"><sc-if value="{{d7.seal}}" hint-placeholder-val="{{false}}"><span class="seal" aria-hidden="true"><svg viewBox="0 0 8 8" fill="#0a0806"><circle cx="2.2" cy="2.2" r="1.9"></circle><circle cx="5.8" cy="2.2" r="1.9"></circle><circle cx="2.2" cy="5.8" r="1.9"></circle><circle cx="5.8" cy="5.8" r="1.9"></circle><rect x="3" y="3" width="2" height="2"></rect></svg></span></sc-if></span></button>
+    </div>
+  </section>
+
+  <!-- Cartas de tarot flotando (sin marco) · imágenes pendientes -->
+  <section aria-label="Cartas de tarot del paquete" style="position:absolute;z-index:6;top:372px;left:124px;width:1032px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px">
+    <div class="cell">
+      <button type="button" class="{{c0.cls}}" onClick="{{c0.click}}" aria-label="{{c0.aria}}"><span class="tph"><b>IMAGEN</b>Tarot<br>El Trébol</span></button>
+      <sc-if value="{{c0.open}}" hint-placeholder-val="{{false}}"><div class="panel-q info"><span class="nm">El Trébol</span><span class="fx">Da el efecto Suerte a hasta 2 cartas marcadas</span><button class="btn ibtn" type="button" onClick="{{c0.use}}" disabled="{{c0.blocked}}">{{c0.btn}}</button></div></sc-if>
+    </div>
+    <div class="cell">
+      <button type="button" class="{{c1.cls}}" onClick="{{c1.click}}" aria-label="{{c1.aria}}"><span class="tph"><b>IMAGEN</b>Tarot<br>El Prisma</span></button>
+      <sc-if value="{{c1.open}}" hint-placeholder-val="{{false}}"><div class="panel-q info"><span class="nm">El Prisma</span><span class="fx">Vuelve Policromo al joker que elijas arriba</span><button class="btn ibtn" type="button" onClick="{{c1.use}}" disabled="{{c1.blocked}}">{{c1.btn}}</button></div></sc-if>
+    </div>
+    <div class="cell">
+      <button type="button" class="{{c2.cls}}" onClick="{{c2.click}}" aria-label="{{c2.aria}}"><span class="tph"><b>IMAGEN</b>Tarot<br>La Torre</span></button>
+      <sc-if value="{{c2.open}}" hint-placeholder-val="{{false}}"><div class="panel-q info"><span class="nm">La Torre</span><span class="fx">Destruye hasta 2 cartas marcadas</span><button class="btn ibtn" type="button" onClick="{{c2.use}}" disabled="{{c2.blocked}}">{{c2.btn}}</button></div></sc-if>
+    </div>
+    <div class="cell">
+      <button type="button" class="{{c3.cls}}" onClick="{{c3.click}}" aria-label="{{c3.aria}}"><span class="tph"><b>IMAGEN</b>Tarot<br>La Luna</span></button>
+      <sc-if value="{{c3.open}}" hint-placeholder-val="{{false}}"><div class="panel-q info"><span class="nm">La Luna</span><span class="fx">Quita el efecto a hasta 2 cartas marcadas</span><button class="btn ibtn" type="button" onClick="{{c3.use}}" disabled="{{c3.blocked}}">{{c3.btn}}</button></div></sc-if>
+    </div>
+  </section>
+
+  <a class="dpile" href="MazoCompleto.dc.html" aria-label="Tu mazo: 38 cartas. Ver mazo completo">
+    <span class="spr bk" style="--s:1.5;position:absolute;left:0;top:8px;filter:brightness(.55)"></span>
+    <span class="spr bk" style="--s:1.5;position:absolute;left:3px;top:4px;filter:brightness(.78)"></span>
+    <span class="spr bk" style="--s:1.5;position:absolute;left:6px;top:0"></span>
+    <span class="dcount">38</span>
+  </a>
+  <a class="btn btn-ghost gear" href="ProximosDealers.dc.html" aria-label="Ver los próximos dealers" style="right:168px"><svg viewBox="0 0 16 16" aria-hidden="true"><g fill="currentColor"><rect x="2" y="1" width="3" height="3"></rect><rect x="11" y="1" width="3" height="3"></rect><rect x="4" y="4" width="8" height="2"></rect><rect x="4" y="6" width="8" height="6"></rect><rect x="6" y="12" width="4" height="3"></rect></g><rect x="6" y="8" width="1" height="1" fill="#211910"></rect><rect x="9" y="8" width="1" height="1" fill="#211910"></rect></svg><span class="k" style="font-size:10px;letter-spacing:0">DEALERS</span></a>
+  <a class="btn btn-ghost gear" href="Estadisticas.dc.html" aria-label="Ver estadísticas de la partida" style="right:96px"><svg viewBox="0 0 16 16" aria-hidden="true"><g fill="currentColor"><rect x="1" y="9" width="3" height="6"></rect><rect x="6" y="5" width="3" height="10"></rect><rect x="11" y="1" width="3" height="14"></rect></g></svg><span class="k">STATS</span></a>
+  <a class="btn btn-ghost gear" href="Configuracion.dc.html" aria-label="Configuración (Esc)"><svg viewBox="0 0 16 16" aria-hidden="true"><g fill="currentColor"><rect x="6" y="0" width="4" height="3"></rect><rect x="6" y="13" width="4" height="3"></rect><rect x="0" y="6" width="3" height="4"></rect><rect x="13" y="6" width="3" height="4"></rect><rect x="2" y="2" width="3" height="3"></rect><rect x="11" y="2" width="3" height="3"></rect><rect x="2" y="11" width="3" height="3"></rect><rect x="11" y="11" width="3" height="3"></rect><rect x="3" y="3" width="10" height="10"></rect></g><rect x="6" y="6" width="4" height="4" fill="#211910"></rect></svg><span class="k">ESC</span></a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"mazo":{"editor":"enum","options":["Claro","Oscuro"],"default":"Claro","section":"Cartas"},"$preview":{"width":1280,"height":720}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.picks = 1;
+    this.total = 4;
+    this.items = [
+      { n: 'El Trébol', need: 'cards', max: 2, fx: 'seal', verb: 'Usar' },
+      { n: 'El Prisma', need: 'joker', ed: 'poly', verb: 'Usar en joker' },
+      { n: 'La Torre', need: 'cards', max: 2, fx: 'gone', verb: 'Destruir' },
+      { n: 'La Luna', need: 'cards', max: 2, fx: 'clear', verb: 'Usar' }
+    ];
+    this.deck = [
+      { n: 'Rey de picas', fx: 'poly seal' },
+      { n: 'Siete de diamantes', fx: '' },
+      { n: 'As de tréboles', fx: 'seal' },
+      { n: 'Diez de corazones', fx: '' },
+      { n: 'Rey de picas', fx: '' },
+      { n: 'Tres de tréboles', fx: 'poly' },
+      { n: 'Reina de diamantes', fx: '' },
+      { n: 'Nueve de picas', fx: '' }
+    ];
+    this.state = {
+      coins: 9, jsel: -1, open: [0], used: [], pre: [], marked: [3, 7], deckFx: {},
+      jokers: [
+        { n: 'Calderilla', e: '+20 fichas', p: 2, col: 0, ed: '' },
+        { n: 'El Pícaro', e: '+3 mult', p: 3, col: 1, ed: 'poly' },
+        { n: 'Doble o Nada', e: '×2 mult si sumas 21', p: 4, col: 0, ed: '' },
+        { n: 'La Banca', e: '+2 monedas al ganar una mano', p: 3, col: 1, ed: '' },
+        { n: 'Mano Larga', e: '+2 mult si pides 3 cartas o más', p: 2, col: 0, ed: 'neg' }
+      ]
+    };
+  }
+  left() { return this.picks - this.state.used.length; }
+  fxOf(m) { const f = this.state.deckFx[m]; return f !== undefined ? f : this.deck[m].fx; }
+  check(i) {
+    const s = this.state;
+    const it = this.items[i];
+    if (it.need === 'cards') {
+      if (s.marked.length === 0) return 'Marca cartas arriba';
+      if (s.marked.length > it.max) return 'Máximo ' + it.max + ' cartas';
+    }
+    if (it.need === 'joker') {
+      const j = s.jsel >= 0 ? s.jokers[s.jsel] : null;
+      if (!j) return 'Elige un joker arriba';
+      if (j.ed === it.ed) return 'Ya tiene ese efecto';
+    }
+    return '';
+  }
+  clickItem(i) {
+    const s = this.state;
+    if (s.used.indexOf(i) >= 0 || this.left() <= 0) return;
+    if (s.open.indexOf(i) >= 0) { this.useItem(i); return; }
+    const open = this.picks > 1 ? s.open.concat([i]).slice(-this.left()) : [i];
+    this.setState({ open: open });
+  }
+  useItem(i) {
+    const s = this.state;
+    const it = this.items[i];
+    if (s.used.indexOf(i) >= 0 || this.check(i)) return;
+    const jokers = s.jokers.slice();
+    const deckFx = Object.assign({}, s.deckFx);
+    if (it.need === 'joker') jokers[s.jsel] = Object.assign({}, jokers[s.jsel], { ed: it.ed });
+    if (it.need === 'cards') {
+      s.marked.forEach((m) => {
+        const cur = this.fxOf(m);
+        let nf = cur;
+        if (it.fx === 'seal' && cur.indexOf('seal') < 0) nf = (cur + ' seal').trim();
+        if (it.fx === 'poly' && cur.indexOf('poly') < 0) nf = (cur + ' poly').trim();
+        if (it.fx === 'clear') nf = '';
+        if (it.fx === 'gone') nf = 'gone';
+        deckFx[m] = nf;
+      });
+    }
+    this.setState({ used: s.used.concat([i]), open: s.open.filter((x) => x !== i), marked: [], jsel: -1, jokers: jokers, deckFx: deckFx });
+  }
+  itemVals(i) {
+    const s = this.state;
+    const it = this.items[i];
+    const used = s.used.indexOf(i) >= 0;
+    const open = s.open.indexOf(i) >= 0 && !used;
+    const reason = this.check(i);
+    return {
+      cls: 'fc' + (open ? ' on' : '') + (used ? (s.pre.indexOf(i) >= 0 ? ' gone' : ' out') : ''),
+      open: open,
+      blocked: !!reason,
+      btn: reason || it.verb,
+      aria: it.n + (used ? ', ya usada' : (open ? ', toca otra vez para usar' : ', toca para ver qué hace')),
+      click: () => this.clickItem(i),
+      use: () => this.useItem(i)
+    };
+  }
+  deckVals(m) {
+    const s = this.state;
+    const fx = this.fxOf(m);
+    const gone = fx === 'gone';
+    const marked = s.marked.indexOf(m) >= 0;
+    return {
+      cls: 'dk' + (marked ? ' mk' : '') + (gone ? ' gone' : ''),
+      spr: 'spr cd' + (fx.indexOf('poly') >= 0 ? ' poly' : ''),
+      seal: fx.indexOf('seal') >= 0,
+      aria: this.deck[m].n + (gone ? ', destruida' : (marked ? ', marcada' : '')),
+      click: () => {
+        if (gone) return;
+        const mk = this.state.marked;
+        const next = mk.indexOf(m) >= 0 ? mk.filter((x) => x !== m) : (mk.length >= 3 ? mk : mk.concat([m]));
+        this.setState({ marked: next });
+      }
+    };
+  }
+  jokerVals(k) {
+    const s = this.state;
+    const j = s.jokers[k];
+    const edTxt = j && j.ed === 'poly' ? 'Policromo · ×1.5 mult' : (j && j.ed === 'neg' ? 'Negativo · +1 espacio' : '');
+    return {
+      has: !!j, empty: !j, sel: !!j && s.jsel === k,
+      cls: 'jb' + (s.jsel === k ? ' sel' : ''),
+      wrap: j && j.ed === 'neg' ? 'neg' : 'nn',
+      spr: 'spr jk c' + (j ? j.col : 0) + (j && j.ed === 'poly' ? ' poly' : ''),
+      n: j ? j.n : '', e: j ? j.e : '', p: j ? j.p : 0,
+      edTxt: edTxt, hasEd: !!edTxt,
+      aria: j ? j.n + '. Toca para elegirlo o venderlo' : '',
+      click: () => this.setState({ jsel: this.state.jsel === k ? -1 : k }),
+      sell: () => {
+        const js = this.state.jokers.slice();
+        if (!js[k]) return;
+        const price = js[k].p;
+        js[k] = null;
+        this.setState({ jokers: js, jsel: -1, coins: this.state.coins + price });
+      }
+    };
+  }
+  renderVals() {
+    const s = this.state;
+    const left = this.left();
+    const dark = (this.props.mazo ?? 'Claro') === 'Oscuro';
+    const v = {
+      deckCls: dark ? 'oscuro' : '',
+      coins: s.coins,
+      count: s.jokers.filter(Boolean).length + '/5',
+      status: left > 0 ? 'Elige ' + this.picks + ' de ' + this.total + ' · toca 2 veces para usar' : 'Listo · tarot usado',
+      skipTxt: left > 0 ? 'Saltar' : 'Continuar',
+      deckCls: 'deck' + (left > 0 ? '' : ' home'),
+      markedTxt: s.marked.length + ' marcada' + (s.marked.length === 1 ? '' : 's')
+    };
+    for (let k = 0; k < 5; k++) v['j' + k] = this.jokerVals(k);
+    for (let m = 0; m < this.deck.length; m++) v['d' + m] = this.deckVals(m);
+    for (let i = 0; i < this.items.length; i++) v['c' + i] = this.itemVals(i);
+    return v;
+  }
+}
+</script>
+</body>
+</html>

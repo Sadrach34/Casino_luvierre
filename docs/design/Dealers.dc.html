@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Selección de dealer</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#000}
+.stage{position:relative;width:1280px;height:720px;overflow:hidden;box-sizing:border-box;font-family:'Pixelify Sans',ui-monospace,monospace;color:#dfeae4;background-color:#0a0806;background-image:url("/_blob/9eb210e033e27fef99b3b1dc11476e9d"),linear-gradient(45deg,#120e08 25%,transparent 25%,transparent 75%,#120e08 75%),linear-gradient(45deg,#120e08 25%,transparent 25%,transparent 75%,#120e08 75%);background-size:256px 256px,64px 64px,64px 64px;background-position:0 0,0 0,32px 32px;animation:bgmove 14s linear infinite}
+@keyframes bgmove{to{background-position:256px 256px,256px 256px,288px 288px}}
+.stage::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:40;background:radial-gradient(ellipse at 50% 50%,transparent 60%,rgba(0,0,0,.55) 100%)}
+.stage h1,.stage h2,.stage h3,.stage p{margin:0;font-weight:inherit}
+.bunting{position:absolute;top:0;left:0;right:0;z-index:3;height:24px;background:linear-gradient(#cf9b38,#cf9b38) 0 0/100% 6px no-repeat,conic-gradient(from -45deg at bottom,#cf9b38 90deg,transparent 0) 0 6px/32px 18px repeat-x}
+.panel{background:#15100a;border:3px solid #cf9b38;box-shadow:0 0 0 3px #000,6px 6px 0 3px rgba(0,0,0,.7)}
+.panel-q{background:#15100a;border:3px solid #7a5a1e;box-shadow:0 0 0 3px #000,5px 5px 0 3px rgba(0,0,0,.6)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;box-sizing:border-box;font-family:inherit;font-weight:600;font-size:22px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:0;cursor:pointer;background:#cf9b38;color:#0a0806;box-shadow:inset -4px -4px 0 #9a6f1f,inset 4px 4px 0 #f0cf7a,0 0 0 3px #000,5px 5px 0 3px rgba(0,0,0,.7)}
+.btn:hover{background:#e0ad46}
+.btn:focus-visible{outline:3px solid #dfeae4;outline-offset:5px}
+.btn-ghost{background:#211910;color:#ecc062;box-shadow:inset -4px -4px 0 #0a0806,inset 4px 4px 0 #3a2c18,0 0 0 3px #cf9b38,5px 5px 0 3px rgba(0,0,0,.7)}
+.btn-ghost:hover{background:#2b2014}
+.btn[disabled]{cursor:default;background:#211910;color:#b9a780;box-shadow:inset -4px -4px 0 #0a0806,inset 4px 4px 0 #2c2216,0 0 0 3px #4a3a1c}
+.label{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#b9a780}
+.coin{display:inline-block;width:22px;height:22px;flex:none;background:#ecc062;box-shadow:inset 0 0 0 4px #9a6f1f;clip-path:polygon(30% 0,70% 0,100% 30%,100% 70%,70% 100%,30% 100%,0 70%,0 30%)}
+.chip{display:inline-block;width:26px;height:26px;flex:none;background:radial-gradient(circle,#7b2536 0 38%,#dfeae4 40% 58%,#7b2536 60%);clip-path:polygon(30% 0,70% 0,100% 30%,100% 70%,70% 100%,30% 100%,0 70%,0 30%)}
+.pip{display:inline-block;width:16px;height:16px;box-sizing:border-box}
+.off{border:2px solid #7a5a1e}
+.ticket{display:inline-block;width:26px;height:18px;flex:none;background:#cf9b38;-webkit-mask:radial-gradient(circle 4px at 0 50%,transparent 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 4px at 100% 50%,transparent 98%,#000) right/51% 100% no-repeat;mask:radial-gradient(circle 4px at 0 50%,transparent 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 4px at 100% 50%,transparent 98%,#000) right/51% 100% no-repeat}
+.ribbon{display:inline-block;font-size:14px;letter-spacing:.12em;text-transform:uppercase;padding:3px 10px;background:#cf9b38;color:#0a0806;border:2px solid #000}
+.gear{position:absolute;z-index:30;right:24px;bottom:22px;width:60px;height:60px;min-height:60px;padding:0;flex-direction:column;gap:3px}
+.gear svg{width:24px;height:24px}
+.gear .k{font-size:11px;letter-spacing:.12em;line-height:1}
+@media (prefers-reduced-motion:reduce){.stage{animation:none}}
+</style>
+</helmet>
+<div class="stage">
+  <div class="bunting"></div>
+
+  <header style="position:absolute;z-index:4;top:42px;left:80px;right:96px;display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;flex-direction:column;gap:2px">
+      <span class="label">Elige a tu rival</span>
+      <h1 style="font-size:56px;line-height:1;font-weight:700;color:#cf9b38;text-shadow:0 4px 0 #7a5a1e,5px 7px 0 #000">MESA 1</h1>
+    </div>
+    <div style="display:flex;align-items:center;gap:22px">
+      <a class="panel-q" href="Semilla.dc.html" aria-label="Semilla de la partida: 7KQ2-M9XD. Cambiar" style="display:flex;flex-direction:column;padding:4px 16px;box-sizing:border-box;height:48px;justify-content:center;text-decoration:none;color:#dfeae4"><span class="label" style="font-size:12px;line-height:1.1">Semilla</span><span style="font-size:20px;font-weight:700;letter-spacing:.1em;line-height:1.1;color:#ecc062">7KQ2-M9XD</span></a>
+      <a class="btn btn-ghost" href="MazoCompleto.dc.html" style="min-height:48px;font-size:18px;padding:0 20px">Ver mazo</a>
+      <div class="panel" style="display:flex;align-items:center;gap:10px;padding:8px 18px;box-sizing:border-box;height:48px">
+        <span class="coin" aria-hidden="true"></span>
+        <span style="font-size:28px;font-weight:600;color:#ecc062" aria-label="5 monedas">5</span>
+      </div>
+    </div>
+  </header>
+
+  <div style="position:absolute;z-index:4;top:150px;left:80px;right:110px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px">
+    <article class="panel" style="position:relative;height:540px;box-sizing:border-box;display:flex;flex-direction:column">
+      <span class="ribbon" style="position:absolute;top:-17px;left:20px;z-index:2">Siguiente</span>
+      <div style="height:170px;overflow:hidden;background:radial-gradient(ellipse at 50% 80%,#9a6f26 0,#5a3f14 45%,#15100a 85%);border-bottom:3px solid #cf9b38">
+        <img src="/_blob/9da685e417e34915e7da9500feaf3f82" alt="Pip, el primer dealer, con los brazos abiertos" style="width:100%;height:100%;object-fit:cover;object-position:60% 0;display:block">
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;padding:14px 22px 20px;gap:10px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><h2 style="font-size:34px;line-height:1;font-weight:700">Pip</h2><span class="label">Dealer 1 · Fácil</span></div>
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px">
+          <div style="display:flex;flex-direction:column;gap:4px"><span class="label">Meta</span><span style="display:flex;align-items:center;gap:10px;font-size:40px;line-height:1;font-weight:600"><span class="chip" aria-hidden="true"></span>205</span></div>
+          <div style="display:flex;flex-direction:column;gap:4px"><span class="label">Recompensa</span><span style="display:flex;align-items:center;gap:10px;font-size:40px;line-height:1;font-weight:600;color:#ecc062"><span class="coin" aria-hidden="true"></span>3</span></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px"><span class="label">Gánale</span><span style="display:flex;gap:6px" aria-label="Gana 2 de 3 rondas para vencerlo"><span class="pip off"></span><span class="pip off"></span><span class="pip off"></span></span><span style="font-size:16px;color:#b9a780">2 de 3</span></div>
+        <a class="btn" href="Mesa.dc.html" style="margin-top:auto;width:100%;height:56px">Jugar</a>
+        <a class="btn btn-ghost" href="Tienda.dc.html" style="width:100%;height:56px;flex-direction:column;gap:0;padding:0 12px">
+          <span style="font-size:19px;line-height:1.1">Saltar dealer</span>
+          <span style="display:flex;align-items:center;gap:8px;font-size:15px;font-weight:500;letter-spacing:.02em;text-transform:none;color:#ecc062"><span class="ticket" aria-hidden="true"></span>Vale: ganas 20 monedas</span>
+        </a>
+      </div>
+    </article>
+
+    <article class="panel-q" style="height:540px;box-sizing:border-box;display:flex;flex-direction:column">
+      <div style="height:170px;overflow:hidden;background:radial-gradient(ellipse at 50% 80%,#5a4118 0,#2c200d 50%,#15100a 85%);border-bottom:3px solid #7a5a1e">
+        <img src="/_blob/6b669d4437d20d4e09e1dd51f08f2113" alt="Mordaz, el segundo dealer" style="width:100%;height:100%;object-fit:cover;object-position:45% 0;display:block;filter:saturate(.7) brightness(.85)">
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;padding:14px 22px 20px;gap:10px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><h2 style="font-size:34px;line-height:1;font-weight:700">Mordaz</h2><span class="label">Dealer 2 · Medio</span></div>
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px">
+          <div style="display:flex;flex-direction:column;gap:4px"><span class="label">Meta</span><span style="display:flex;align-items:center;gap:10px;font-size:40px;line-height:1;font-weight:600"><span class="chip" aria-hidden="true"></span>308</span></div>
+          <div style="display:flex;flex-direction:column;gap:4px"><span class="label">Recompensa</span><span style="display:flex;align-items:center;gap:10px;font-size:40px;line-height:1;font-weight:600;color:#ecc062"><span class="coin" aria-hidden="true"></span>4</span></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px"><span class="label">Gánale</span><span style="display:flex;gap:6px" aria-label="Gana 2 de 3 rondas para vencerlo"><span class="pip off"></span><span class="pip off"></span><span class="pip off"></span></span><span style="font-size:16px;color:#b9a780">2 de 3</span></div>
+        <button class="btn" type="button" disabled style="margin-top:auto;width:100%;height:56px">Después de Pip</button>
+        <button class="btn" type="button" disabled style="width:100%;height:56px;flex-direction:column;gap:0;padding:0 12px">
+          <span style="font-size:19px;line-height:1.1">Saltar dealer</span>
+          <span style="display:flex;align-items:center;gap:8px;font-size:15px;font-weight:500;letter-spacing:.02em;text-transform:none"><span class="ticket" aria-hidden="true" style="background:#4a3a1c"></span>Vale: ganas 30 monedas</span>
+        </button>
+      </div>
+    </article>
+
+    <article class="panel-q" style="height:540px;box-sizing:border-box;display:flex;flex-direction:column">
+      <div style="height:170px;overflow:hidden;background:radial-gradient(ellipse at 50% 80%,#5a4118 0,#2c200d 50%,#15100a 85%);border-bottom:3px solid #7a5a1e">
+        <img src="/_blob/525eb41f4db13c6c233b8b7fa05eec0c" alt="El Muro, el dealer jefe" style="width:100%;height:100%;object-fit:cover;object-position:50% 0;display:block;filter:saturate(.7) brightness(.85)">
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;padding:14px 22px 20px;gap:10px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><h2 style="font-size:34px;line-height:1;font-weight:700;color:#e8705f">El Muro</h2><span class="label">Jefe</span></div>
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px">
+          <div style="display:flex;flex-direction:column;gap:4px"><span class="label">Meta</span><span style="display:flex;align-items:center;gap:10px;font-size:40px;line-height:1;font-weight:600"><span class="chip" aria-hidden="true"></span>615</span></div>
+          <div style="display:flex;flex-direction:column;gap:4px"><span class="label">Recompensa</span><span style="display:flex;align-items:center;gap:10px;font-size:40px;line-height:1;font-weight:600;color:#ecc062"><span class="coin" aria-hidden="true"></span>5</span></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px"><span class="label">Gánale</span><span style="display:flex;gap:6px" aria-label="Gana 3 de 5 rondas para vencerlo"><span class="pip off" style="border-color:#e8705f"></span><span class="pip off" style="border-color:#e8705f"></span><span class="pip off" style="border-color:#e8705f"></span><span class="pip off" style="border-color:#e8705f"></span><span class="pip off" style="border-color:#e8705f"></span></span><span style="font-size:16px;color:#e8705f">3 de 5</span></div>
+        <div style="background:#2a0f17;border:2px solid #7b2536;padding:8px 12px;display:flex;flex-direction:column;gap:2px">
+          <span class="label" style="color:#e8705f">Efecto</span>
+          <span style="font-size:17px;line-height:1.2">Tu primera mano de la ronda no suma fichas.</span>
+        </div>
+        <button class="btn" type="button" disabled style="margin-top:auto;width:100%;height:56px">Después de Mordaz</button>
+        <span style="font-size:15px;color:#b9a780;text-align:center;line-height:1">El jefe no se puede saltar</span>
+      </div>
+    </article>
+  </div>
+
+  <a class="btn btn-ghost gear" href="Configuracion.dc.html" aria-label="Configuración (Esc)"><svg viewBox="0 0 16 16" aria-hidden="true"><g fill="currentColor"><rect x="6" y="0" width="4" height="3"></rect><rect x="6" y="13" width="4" height="3"></rect><rect x="0" y="6" width="3" height="4"></rect><rect x="13" y="6" width="3" height="4"></rect><rect x="2" y="2" width="3" height="3"></rect><rect x="11" y="2" width="3" height="3"></rect><rect x="2" y="11" width="3" height="3"></rect><rect x="11" y="11" width="3" height="3"></rect><rect x="3" y="3" width="10" height="10"></rect></g><rect x="6" y="6" width="4" height="4" fill="#211910"></rect></svg><span class="k">ESC</span></a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":720}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

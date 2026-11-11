@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Estadísticas de la partida</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#000}
+.stage{position:relative;width:1280px;height:720px;overflow:hidden;box-sizing:border-box;font-family:'Pixelify Sans',ui-monospace,monospace;color:#dfeae4;background-color:#0a0806;background-image:url("/_blob/9eb210e033e27fef99b3b1dc11476e9d"),linear-gradient(45deg,#120e08 25%,transparent 25%,transparent 75%,#120e08 75%),linear-gradient(45deg,#120e08 25%,transparent 25%,transparent 75%,#120e08 75%);background-size:256px 256px,64px 64px,64px 64px;background-position:0 0,0 0,32px 32px}
+.stage h1,.stage h2,.stage h3,.stage p{margin:0;font-weight:inherit}
+.bunting{position:absolute;top:0;left:0;right:0;z-index:3;height:24px;background:linear-gradient(#cf9b38,#cf9b38) 0 0/100% 6px no-repeat,conic-gradient(from -45deg at bottom,#cf9b38 90deg,transparent 0) 0 6px/32px 18px repeat-x}
+.panel{background:#15100a;border:3px solid #cf9b38;box-shadow:0 0 0 3px #000,6px 6px 0 3px rgba(0,0,0,.7)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;box-sizing:border-box;font-family:inherit;font-weight:600;font-size:22px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:0;cursor:pointer;background:#cf9b38;color:#0a0806;box-shadow:inset -4px -4px 0 #9a6f1f,inset 4px 4px 0 #f0cf7a,0 0 0 3px #000,5px 5px 0 3px rgba(0,0,0,.7)}
+.btn:hover{background:#e0ad46}
+.btn:focus-visible{outline:3px solid #dfeae4;outline-offset:5px}
+.btn-ghost{background:#211910;color:#ecc062;box-shadow:inset -4px -4px 0 #0a0806,inset 4px 4px 0 #3a2c18,0 0 0 3px #cf9b38,5px 5px 0 3px rgba(0,0,0,.7)}
+.btn-ghost:hover{background:#2b2014}
+.label{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#b9a780}
+.kbd{font-size:13px;padding:3px 6px;border:2px solid #7a5a1e;color:#ecc062;line-height:1;letter-spacing:.1em}
+.coin{display:inline-block;width:22px;height:22px;flex:none;background:#ecc062;box-shadow:inset 0 0 0 4px #9a6f1f;clip-path:polygon(30% 0,70% 0,100% 30%,100% 70%,70% 100%,30% 100%,0 70%,0 30%)}
+.chip{display:inline-block;width:22px;height:22px;flex:none;background:radial-gradient(circle,#7b2536 0 38%,#dfeae4 40% 58%,#7b2536 60%);clip-path:polygon(30% 0,70% 0,100% 30%,100% 70%,70% 100%,30% 100%,0 70%,0 30%)}
+.spr{position:relative;flex:none;display:block;width:calc(48px*var(--s,3));height:calc(64px*var(--s,3));background-image:var(--spr);background-repeat:no-repeat;background-size:calc(var(--sw)*var(--s,3)) calc(var(--sh)*var(--s,3));background-position:calc(var(--col,0)*-48px*var(--s,3)) calc(var(--row,0)*-64px*var(--s,3));image-rendering:pixelated;filter:drop-shadow(3px 3px 0 rgba(0,0,0,.65))}
+.cd{--spr:url("/_blob/c3fdfeb0d0abb6a3af9bd7e5a721b005");--sw:624px;--sh:256px}
+.oscuro .cd{--spr:url("/_blob/f139bd582298bcde19d0c4ec899fae94")}
+.jk{--spr:url("/_blob/e43ea6237996aacaca58fe6b0f8bb5c0");--sw:96px;--sh:64px}
+.oscuro .jk{--spr:url("/_blob/507f130c5d0337cce8a1efee24cdb017")}
+.dim{position:absolute;inset:0;z-index:10;background:rgba(5,4,2,.8)}
+.modal{position:absolute;z-index:20;left:150px;top:44px;width:980px;box-sizing:border-box;padding:22px 30px 24px;display:flex;flex-direction:column;gap:18px}
+.tile{display:flex;flex-direction:column;gap:6px;padding:12px 14px;background:#100c07;border:2px solid #3a2c18;min-width:0}
+.big{font-size:32px;font-weight:700;line-height:1;display:flex;align-items:center;gap:8px}
+.sub{font-size:13px;color:#b9a780;line-height:1.15}
+</style>
+</helmet>
+<div class="stage {{deckCls}}">
+  <div class="bunting"></div>
+  <div class="dim" aria-hidden="true"></div>
+
+  <section class="panel modal" role="dialog" aria-modal="true" aria-labelledby="st-title">
+    <header style="display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;flex-direction:column;gap:2px">
+        <span class="label">Semilla 7KQ2-M9XD · Mesa 1 · Dealer 1 de 3 · 12:34 jugados</span>
+        <h1 id="st-title" style="font-size:40px;line-height:1;font-weight:700;color:#cf9b38;text-shadow:0 4px 0 #7a5a1e,5px 7px 0 #000">ESTADÍSTICAS</h1>
+      </div>
+      <a class="btn btn-ghost" href="Mesa.dc.html" style="min-height:48px;font-size:18px;padding:0 16px">Cerrar <span class="kbd">ESC</span></a>
+    </header>
+
+    <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px">
+      <div class="tile"><span class="label">Mejor mano</span><span class="big"><span class="chip" aria-hidden="true"></span>252</span><span class="sub">fichas en una sola mano</span></div>
+      <div class="tile"><span class="label">Manos jugadas</span><span class="big">9</span><span class="sub">en 3 rondas</span></div>
+      <div class="tile"><span class="label">Victorias · derrotas</span><span class="big"><span style="color:#ecc062">4</span><span style="color:#b9a780">·</span><span style="color:#e8705f">2</span></span><span class="sub">rondas ganadas y perdidas</span></div>
+      <div class="tile"><span class="label">Blackjacks</span><span class="big">1</span><span class="sub">21 con tus 2 primeras cartas</span></div>
+      <div class="tile"><span class="label">Te pasaste</span><span class="big" style="color:#e8705f">2</span><span class="sub">veces más de 21</span></div>
+      <div class="tile"><span class="label">Mejor racha</span><span class="big">3</span><span class="sub">manos ganadas seguidas</span></div>
+      <div class="tile"><span class="label">Monedas ganadas</span><span class="big" style="color:#ecc062"><span class="coin" aria-hidden="true"></span>21</span><span class="sub">gastadas: 13</span></div>
+      <div class="tile"><span class="label">Rerolls</span><span class="big">1</span><span class="sub">en la tienda</span></div>
+      <div class="tile"><span class="label">Cartas en tu mazo</span><span class="big">38</span><span class="sub">2 destruidas · 1 copiada</span></div>
+      <div class="tile"><span class="label">Tarots usados</span><span class="big" style="color:#c9a9ff">2</span><span class="sub">El Trébol · El Prisma</span></div>
+      <div class="tile"><span class="label">Runas activas</span><span class="big">3</span><span class="sub">Uruz · Thurisaz · Ansuz</span></div>
+      <div class="tile"><span class="label">Jokers vendidos</span><span class="big">1</span><span class="sub">te dieron 3 monedas</span></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px">
+      <div class="tile" style="flex-direction:row;align-items:center;gap:16px">
+        <span class="spr cd" style="--s:1;--col:12;--row:2" role="img" aria-label="Rey de picas"></span>
+        <div style="display:flex;flex-direction:column;gap:4px"><span class="label">Carta más jugada</span><span style="font-size:22px;font-weight:700">Rey de picas</span><span class="sub">salió en 6 manos · aportó 60 fichas</span></div>
+      </div>
+      <div class="tile" style="flex-direction:row;align-items:center;gap:16px">
+        <span class="spr jk" style="--s:1;--col:1" role="img" aria-label="Joker El Pícaro"></span>
+        <div style="display:flex;flex-direction:column;gap:4px"><span class="label">Joker más valioso</span><span style="font-size:22px;font-weight:700">El Pícaro</span><span class="sub">+27 de mult en total</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"mazo":{"editor":"enum","options":["Claro","Oscuro"],"default":"Claro","section":"Cartas"},"$preview":{"width":1280,"height":720}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { deckCls: (this.props.mazo ?? 'Claro') === 'Oscuro' ? 'oscuro' : '' };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+// Verifica el cambio de idioma por la interfaz (menú, dealers, y cambio en mitad de una mano). Uso: node scripts/i18n-check.mjs
+import { chromium } from 'playwright';
+const url = process.env.URL ?? 'http://localhost:5173/';
+const b = await chromium.launch(); const p = await b.newPage({ viewport: { width: 1280, height: 720 } });
+const errs = []; p.on('pageerror', (e) => errs.push(e.message)); p.on('console', (m) => m.type() === 'error' && errs.push(m.text()));
+await p.goto(url); await p.waitForSelector('.stage');
+await p.evaluate(() => { const s = window.__luvierre.store.settings; s.speed = 'turbo'; s.anim = false; });
+await p.keyboard.press('Escape'); await p.click('[data-lang="en"]'); await p.waitForTimeout(300);
+await p.screenshot({ path: 'shots/20-en-config.png' });
+await p.keyboard.press('Escape'); await p.waitForTimeout(200);
+console.log('menú en inglés:', (await p.locator('.menu-main').first().innerText()).replace(/\n/g, ' | '));
+await p.screenshot({ path: 'shots/21-en-menu.png' });
+await p.click('[data-go="seed"]'); await p.click('[data-act="start"]'); await p.waitForTimeout(300);
+await p.screenshot({ path: 'shots/22-en-dealers.png' });
+await p.click('[data-act="play"]'); await p.click('#b-bet'); await p.waitForSelector('#b-hit:not([disabled])', { timeout: 8000 });
+await p.keyboard.press('Escape'); await p.click('[data-lang="es"]'); await p.keyboard.press('Escape');
+console.log('idioma tras cambiar en mitad de mano:', await p.evaluate(() => window.__luvierre.store.settings.lang), '| botón Pedir aún en:', await p.locator('#b-hit').textContent());
+await p.click('#b-stand'); await p.waitForTimeout(4500);
+console.log('al terminar la mano, botón:', (await p.locator('#b-bet').textContent()).trim(), '| Pedir:', await p.locator('#b-hit').textContent());
+await p.screenshot({ path: 'shots/23-es-after.png' });
+console.log(errs.length ? errs : 'sin errores de consola');
+await b.close();

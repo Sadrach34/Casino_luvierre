@@ -1,0 +1,20 @@
+@import '@fontsource-variable/pixelify-sans';
+/* Números: Silkscreen solo para dígitos (unicode-range U+0030-0039); las letras siguen en Pixelify Sans.
+   El 5 de Pixelify Sans parece un 8, así que los dígitos usan otra fuente para que se distingan. */
+@font-face{font-family:'SilkscreenNums';src:url('../../node_modules/@fontsource/silkscreen/files/silkscreen-latin-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;unicode-range:U+0030-0039}
+@font-face{font-family:'SilkscreenNums';src:url('../../node_modules/@fontsource/silkscreen/files/silkscreen-latin-700-normal.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap;unicode-range:U+0030-0039}
+html,body{margin:0;height:100%;background:#000;overflow:hidden}
+#viewport{position:fixed;inset:0;background:#000;overflow:hidden}
+#app{position:absolute;left:50%;top:50%;width:1280px;height:720px;transform-origin:50% 50%;image-rendering:pixelated}
+#app .stage{position:absolute;inset:0;width:1280px;height:720px;font-family:'SilkscreenNums','Pixelify Sans Variable','Pixelify Sans',ui-monospace,monospace}
+button{font-family:inherit}
+.stage button{-webkit-tap-highlight-color:transparent}
+.stage *{box-sizing:border-box}
+.stage .fade-in{animation:fadein .35s ease both}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+.stage h1,.stage h2,.stage h3,.stage p{margin:0;font-weight:inherit}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (prefers-reduced-motion:reduce){#app *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+[hidden]{display:none!important}
+#app .stage{font-variant-ligatures:none;font-feature-settings:'liga' 0,'clig' 0}

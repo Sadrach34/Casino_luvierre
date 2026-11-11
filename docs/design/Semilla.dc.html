@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Semilla</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#000}
+.stage{position:relative;width:1280px;height:720px;overflow:hidden;box-sizing:border-box;font-family:'Pixelify Sans',ui-monospace,monospace;color:#dfeae4;background-color:#0a0806;background-image:url("/_blob/9eb210e033e27fef99b3b1dc11476e9d"),linear-gradient(45deg,#120e08 25%,transparent 25%,transparent 75%,#120e08 75%),linear-gradient(45deg,#120e08 25%,transparent 25%,transparent 75%,#120e08 75%);background-size:256px 256px,64px 64px,64px 64px;background-position:0 0,0 0,32px 32px;animation:bgmove 14s linear infinite}
+@keyframes bgmove{to{background-position:256px 256px,256px 256px,288px 288px}}
+.stage::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:40;background:radial-gradient(ellipse at 50% 50%,transparent 60%,rgba(0,0,0,.55) 100%)}
+.stage h1,.stage h2,.stage h3,.stage p{margin:0;font-weight:inherit}
+.bunting{position:absolute;top:0;left:0;right:0;z-index:3;height:24px;background:linear-gradient(#cf9b38,#cf9b38) 0 0/100% 6px no-repeat,conic-gradient(from -45deg at bottom,#cf9b38 90deg,transparent 0) 0 6px/32px 18px repeat-x}
+.panel{background:#15100a;border:3px solid #cf9b38;box-shadow:0 0 0 3px #000,6px 6px 0 3px rgba(0,0,0,.7)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;box-sizing:border-box;font-family:inherit;font-weight:600;font-size:22px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:0;cursor:pointer;background:#cf9b38;color:#0a0806;box-shadow:inset -4px -4px 0 #9a6f1f,inset 4px 4px 0 #f0cf7a,0 0 0 3px #000,5px 5px 0 3px rgba(0,0,0,.7)}
+.btn:hover{background:#e0ad46}
+.btn:focus-visible{outline:3px solid #dfeae4;outline-offset:5px}
+.btn-ghost{background:#211910;color:#ecc062;box-shadow:inset -4px -4px 0 #0a0806,inset 4px 4px 0 #3a2c18,0 0 0 3px #cf9b38,5px 5px 0 3px rgba(0,0,0,.7)}
+.btn-ghost:hover{background:#2b2014}
+.btn-sm{min-height:44px;font-size:18px;padding:0 16px;box-shadow:inset -3px -3px 0 #0a0806,inset 3px 3px 0 #3a2c18,0 0 0 2px #cf9b38,4px 4px 0 2px rgba(0,0,0,.7)}
+.label{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#b9a780}
+.seed{width:100%;box-sizing:border-box;height:72px;padding:0 20px;background:#0a0806;border:3px solid #cf9b38;color:#ecc062;font-family:inherit;font-weight:700;font-size:40px;letter-spacing:.14em;text-transform:uppercase;outline:0;box-shadow:inset 4px 4px 0 #000}
+.seed:focus-visible{outline:3px solid #dfeae4;outline-offset:4px}
+.mode{display:flex;flex-direction:column;gap:2px;align-items:flex-start;flex:1;padding:10px 14px;box-sizing:border-box;font-family:inherit;color:#dfeae4;background:#15100a;border:3px solid #4a3a1c;cursor:pointer;text-align:left}
+.mode:hover{border-color:#7a5a1e}
+.mode[aria-pressed="true"]{border-color:#cf9b38;background:#211910}
+.rec{display:flex;align-items:center;justify-content:space-between;gap:12px;height:44px;border-bottom:2px dashed #3a2c18}
+.spr{position:relative;flex:none;display:block;width:calc(48px*var(--s,3));height:calc(64px*var(--s,3));background-image:var(--spr);background-repeat:no-repeat;background-size:calc(var(--sw)*var(--s,3)) calc(var(--sh)*var(--s,3));background-position:calc(var(--col,0)*-48px*var(--s,3)) calc(var(--row,0)*-64px*var(--s,3));image-rendering:pixelated;filter:drop-shadow(4px 4px 0 rgba(0,0,0,.65))}
+.jk{--spr:url("/_blob/e43ea6237996aacaca58fe6b0f8bb5c0");--sw:96px;--sh:64px}
+.oscuro .jk{--spr:url("/_blob/507f130c5d0337cce8a1efee24cdb017")}
+.gear{position:absolute;z-index:30;right:24px;bottom:22px;width:60px;height:60px;min-height:60px;padding:0;flex-direction:column;gap:3px}
+.gear svg{width:24px;height:24px}
+.gear .k{font-size:11px;letter-spacing:.12em;line-height:1}
+@media (prefers-reduced-motion:reduce){.stage{animation:none}}
+</style>
+</helmet>
+<div class="stage {{deckCls}}">
+  <div class="bunting"></div>
+
+  <div style="position:absolute;z-index:2;left:790px;top:60px;width:490px;height:660px">
+    <div style="position:absolute;left:0;top:60px;width:490px;height:600px;background:radial-gradient(circle,#9a6f26 0,#5a3f14 38%,rgba(20,16,10,0) 68%)"></div>
+    <div class="spr jk" style="position:absolute;left:40px;top:150px;--s:3;--col:0;transform:rotate(-14deg);transform-origin:50% 100%"></div>
+    <div class="spr jk" style="position:absolute;left:330px;top:150px;--s:3;--col:1;transform:rotate(14deg);transform-origin:50% 100%"></div>
+    <img src="/_blob/0c515e6afa2b5c62fa606629af91b8a8" alt="El dealer, agazapado, ofrece la mano abierta" style="position:absolute;left:30px;bottom:0;height:560px;width:auto;display:block">
+  </div>
+
+  <section style="position:absolute;z-index:4;left:80px;top:62px;width:660px;display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;flex-direction:column;gap:2px">
+      <span class="label">Modo infinito</span>
+      <h1 style="font-size:64px;line-height:1;font-weight:700;color:#cf9b38;text-shadow:0 5px 0 #7a5a1e,6px 8px 0 #000">SEMILLA</h1>
+    </div>
+    <p style="font-size:19px;line-height:1.25;color:#b9a780;max-width:600px">La misma semilla genera las mismas mesas, dealers, tiendas y paquetes. Pásasela a un amigo y comparen puntajes.</p>
+    <div class="panel" style="padding:20px 24px 22px;display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:14px">
+        <button class="mode" type="button" aria-pressed="false"><span class="label" style="color:#ecc062">Diaria</span><span style="font-size:20px;font-weight:600">06·11·2026</span></button>
+        <button class="mode" type="button" aria-pressed="false"><span class="label" style="color:#ecc062">Aleatoria</span><span style="font-size:20px;font-weight:600">Nueva cada vez</span></button>
+        <button class="mode" type="button" aria-pressed="true"><span class="label" style="color:#ecc062">Mía</span><span style="font-size:20px;font-weight:600">Escribir o pegar</span></button>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <label class="label" for="semilla">Código de la semilla</label>
+        <input id="semilla" class="seed" type="text" value="7KQ2-M9XD" maxlength="9" spellcheck="false" autocomplete="off">
+      </div>
+      <div style="display:flex;gap:14px">
+        <button class="btn btn-ghost btn-sm" type="button"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="4" y="5" width="16" height="16"></rect><path d="M9 5V3h6v2"></path></svg>Pegar</button>
+        <button class="btn btn-ghost btn-sm" type="button"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 4h16v16H4z" fill="none" stroke="currentColor" stroke-width="2.4"></path><rect x="7" y="7" width="3" height="3"></rect><rect x="14" y="7" width="3" height="3"></rect><rect x="10.5" y="10.5" width="3" height="3"></rect><rect x="7" y="14" width="3" height="3"></rect><rect x="14" y="14" width="3" height="3"></rect></svg>Aleatoria</button>
+        <button class="btn btn-ghost btn-sm" type="button"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="8" y="8" width="13" height="13"></rect><path d="M16 8V3H3v13h5"></path></svg>Copiar</button>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column">
+      <span class="label" style="margin-bottom:2px">Semillas recientes</span>
+      <div class="rec"><span style="font-size:22px;font-weight:600;letter-spacing:.1em">3FNA-81ZC</span><span style="font-size:16px;color:#b9a780">Mesa 2 · 4 820 pts</span><button class="btn btn-ghost btn-sm" type="button" style="min-height:36px;font-size:15px;padding:0 12px">Usar</button></div>
+      <div class="rec" style="border-bottom:0"><span style="font-size:22px;font-weight:600;letter-spacing:.1em">B0TT-C4RD</span><span style="font-size:16px;color:#b9a780">Mesa 1 · 1 840 pts</span><button class="btn btn-ghost btn-sm" type="button" style="min-height:36px;font-size:15px;padding:0 12px">Usar</button></div>
+    </div>
+  </section>
+  <a class="btn btn-ghost" href="Main.dc.html" style="position:absolute;z-index:4;left:80px;bottom:22px;width:200px;height:56px;font-size:22px">Volver</a>
+  <a class="btn" href="Dealers.dc.html" style="position:absolute;z-index:4;left:330px;bottom:22px;width:410px;height:56px;font-size:26px">Empezar partida</a>
+
+  <a class="btn btn-ghost gear" href="Configuracion.dc.html" aria-label="Configuración (Esc)"><svg viewBox="0 0 16 16" aria-hidden="true"><g fill="currentColor"><rect x="6" y="0" width="4" height="3"></rect><rect x="6" y="13" width="4" height="3"></rect><rect x="0" y="6" width="3" height="4"></rect><rect x="13" y="6" width="3" height="4"></rect><rect x="2" y="2" width="3" height="3"></rect><rect x="11" y="2" width="3" height="3"></rect><rect x="2" y="11" width="3" height="3"></rect><rect x="11" y="11" width="3" height="3"></rect><rect x="3" y="3" width="10" height="10"></rect></g><rect x="6" y="6" width="4" height="4" fill="#211910"></rect></svg><span class="k">ESC</span></a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"mazo":{"editor":"enum","options":["Claro","Oscuro"],"default":"Claro","section":"Cartas"},"$preview":{"width":1280,"height":720}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { deckCls: (this.props.mazo ?? 'Claro') === 'Oscuro' ? 'oscuro' : '' };
+  }
+}
+</script>
+</body>
+</html>

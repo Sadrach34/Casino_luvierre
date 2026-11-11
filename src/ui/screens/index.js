@@ -1,0 +1,27 @@
+import { registerScreen, registerModal } from '../router.js';
+import menu from './menu.js';
+import seed from './seed.js';
+import dealers from './dealers.js';
+import table from './table.js';
+import result from './result.js';
+import shop from './shop.js';
+import pack from './pack.js';
+import over from './over.js';
+import { configModal, statsModal, upcomingModal, creditsModal, deckModal, recordsModal } from './modals.js';
+import { devModal } from '../devmenu.js';
+
+registerScreen('menu', menu);
+registerScreen('seed', seed);
+registerScreen('dealers', dealers);
+registerScreen('table', table);
+registerScreen('result', result);
+registerScreen('shop', shop);
+registerScreen('pack', pack);
+registerScreen('over', over);
+registerModal('config', configModal);
+registerModal('stats', statsModal);
+registerModal('upcoming', upcomingModal);
+registerModal('credits', creditsModal);
+registerModal('deck', deckModal);
+registerModal('records', recordsModal);
+registerModal('dev', devModal);

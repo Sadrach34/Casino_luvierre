@@ -1,0 +1,162 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "Configuracion.dc.html": {
+      "h": 720,
+      "is_interactive": true,
+      "title": "12 · Configuración (modal · Esc)",
+      "w": 1280,
+      "x": 2720,
+      "y": 2520
+    },
+    "Dealers.dc.html": {
+      "h": 720,
+      "title": "3 · Selección de dealer",
+      "w": 1280,
+      "x": 2720,
+      "y": 0
+    },
+    "Main.dc.html": {
+      "h": 720,
+      "title": "1 · Menú principal",
+      "w": 1280,
+      "x": 0,
+      "y": 0
+    },
+    "MegaRunas.dc.html": {
+      "h": 720,
+      "is_interactive": true,
+      "title": "11 · Mega paquete de runas (elige 2 de 4)",
+      "w": 1280,
+      "x": 1360,
+      "y": 2520
+    },
+    "MegaTarot.dc.html": {
+      "h": 720,
+      "is_interactive": true,
+      "title": "9 · Mega paquete de tarot (elige 2 de 6)",
+      "w": 1280,
+      "x": 2720,
+      "y": 1680
+    },
+    "Mesa.dc.html": {
+      "h": 720,
+      "title": "4 · Mesa (partida)",
+      "w": 1280,
+      "x": 0,
+      "y": 840
+    },
+    "PaqueteJokers.dc.html": {
+      "h": 720,
+      "is_interactive": true,
+      "title": "7 · Paquete de jokers (elige 1 de 3)",
+      "w": 1280,
+      "x": 0,
+      "y": 1680
+    },
+    "PaqueteRunas.dc.html": {
+      "h": 720,
+      "is_interactive": true,
+      "title": "10 · Paquete de runas (elige 1 de 2)",
+      "w": 1280,
+      "x": 0,
+      "y": 2520
+    },
+    "PaqueteTarot.dc.html": {
+      "h": 720,
+      "is_interactive": true,
+      "title": "8 · Paquete de tarot (elige 1 de 4)",
+      "w": 1280,
+      "x": 1360,
+      "y": 1680
+    },
+    "Resultado.dc.html": {
+      "h": 720,
+      "title": "5 · Resultado del dealer",
+      "w": 1280,
+      "x": 1360,
+      "y": 840
+    },
+    "Semilla.dc.html": {
+      "h": 720,
+      "title": "2 · Semilla",
+      "w": 1280,
+      "x": 1360,
+      "y": 0
+    },
+    "Tienda.dc.html": {
+      "h": 720,
+      "is_interactive": true,
+      "title": "6 · Tienda",
+      "w": 1280,
+      "x": 2720,
+      "y": 840
+    },
+    "Estadisticas.dc.html": {
+      "h": 720,
+      "title": "13 · Estadísticas de la partida (modal)",
+      "w": 1280,
+      "x": 0,
+      "y": 3360
+    },
+    "ProximosDealers.dc.html": {
+      "h": 720,
+      "title": "14 · Próximos dealers (modal, solo ver)",
+      "w": 1280,
+      "x": 1360,
+      "y": 3360
+    },
+    "Agradecimientos.dc.html": {
+      "h": 720,
+      "title": "15 · Agradecimientos (desde Configuración)",
+      "w": 1280,
+      "x": 2720,
+      "y": 3360
+    },
+    "MazoCompleto.dc.html": {
+      "h": 720,
+      "title": "16 · Tu mazo completo (modal)",
+      "w": 1280,
+      "x": 0,
+      "y": 4200
+    },
+    "FinPaquete.dc.html": {
+      "h": 720,
+      "title": "17 · Fin del paquete: las cartas regresan al mazo",
+      "w": 1280,
+      "x": 1360,
+      "y": 4200
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-11-06T17:40:00Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "launch": {
+    "view": "canvas"
+  },
+  "notes": {},
+  "order": [
+    "Main.dc.html",
+    "Semilla.dc.html",
+    "Dealers.dc.html",
+    "Mesa.dc.html",
+    "Resultado.dc.html",
+    "Tienda.dc.html",
+    "PaqueteJokers.dc.html",
+    "PaqueteTarot.dc.html",
+    "MegaTarot.dc.html",
+    "PaqueteRunas.dc.html",
+    "MegaRunas.dc.html",
+    "Configuracion.dc.html",
+    "Estadisticas.dc.html",
+    "ProximosDealers.dc.html",
+    "Agradecimientos.dc.html",
+    "MazoCompleto.dc.html",
+    "FinPaquete.dc.html"
+  ],
+  "pages": [],
+  "title": "Blackjack Rogue"
+}

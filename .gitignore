@@ -1,0 +1,9 @@
+node_modules/
+dist/
+# Assets de terceros sin permiso de redistribución (ver README: Créditos)
+assets-raw/
+# Assets copiados por scripts/prepare-assets.mjs (algunos sin permiso de redistribución)
+public/assets/
+shots/
+dev-debug.log
+.env

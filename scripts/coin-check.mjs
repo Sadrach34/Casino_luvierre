@@ -1,0 +1,11 @@
+import { chromium } from 'playwright';
+const b = await chromium.launch(); const p = await b.newPage({ viewport: { width: 1280, height: 720 } });
+const errs = []; p.on('pageerror', (e) => errs.push(e.message)); p.on('requestfailed', (r) => errs.push('FAILED ' + r.url()));
+p.on('response', (r) => { if (r.status() >= 400) errs.push(r.status() + ' ' + r.url()); });
+await p.goto((process.env.URL ?? 'http://localhost:5173/') + '?fresh'); await p.waitForSelector('.stage');
+await p.evaluate(() => { localStorage.removeItem('luvierre.save.auto'); window.__luvierre.go('seed'); });
+await p.click('[data-act="start"]'); await p.waitForTimeout(500);
+await p.screenshot({ path: 'shots/50-dealers.png' });
+console.log(await p.evaluate(() => { const c = document.querySelector('.coin'); const s = getComputedStyle(c); return { w: s.width, bg: s.backgroundImage, size: s.backgroundSize, anim: s.animationName }; }));
+console.log(errs.length ? errs : 'sin errores de red');
+await b.close();

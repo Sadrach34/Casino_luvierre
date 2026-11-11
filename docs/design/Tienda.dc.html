@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Tienda</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#000}
+.stage{position:relative;width:1280px;height:720px;overflow:hidden;box-sizing:border-box;font-family:'Pixelify Sans',ui-monospace,monospace;color:#dfeae4;background-color:#0a0806;background-image:url("/_blob/9eb210e033e27fef99b3b1dc11476e9d"),linear-gradient(45deg,#120e08 25%,transparent 25%,transparent 75%,#120e08 75%),linear-gradient(45deg,#120e08 25%,transparent 25%,transparent 75%,#120e08 75%);background-size:256px 256px,64px 64px,64px 64px;background-position:0 0,0 0,32px 32px;animation:bgmove 14s linear infinite}
+@keyframes bgmove{to{background-position:256px 256px,256px 256px,288px 288px}}
+.stage::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:40;background:radial-gradient(ellipse at 50% 50%,transparent 60%,rgba(0,0,0,.55) 100%)}
+.stage h1,.stage h2,.stage h3,.stage p{margin:0;font-weight:inherit}
+.bunting{position:absolute;top:0;left:0;right:0;z-index:3;height:24px;background:linear-gradient(#cf9b38,#cf9b38) 0 0/100% 6px no-repeat,conic-gradient(from -45deg at bottom,#cf9b38 90deg,transparent 0) 0 6px/32px 18px repeat-x}
+.panel{background:#15100a;border:3px solid #cf9b38;box-shadow:0 0 0 3px #000,6px 6px 0 3px rgba(0,0,0,.7)}
+.panel-q{background:#15100a;border:3px solid #7a5a1e;box-shadow:0 0 0 3px #000,5px 5px 0 3px rgba(0,0,0,.6)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;box-sizing:border-box;font-family:inherit;font-weight:600;font-size:22px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:0;cursor:pointer;background:#cf9b38;color:#0a0806;box-shadow:inset -4px -4px 0 #9a6f1f,inset 4px 4px 0 #f0cf7a,0 0 0 3px #000,5px 5px 0 3px rgba(0,0,0,.7)}
+.btn:hover{background:#e0ad46}
+.btn:focus-visible{outline:3px solid #dfeae4;outline-offset:5px}
+.btn-ghost{background:#211910;color:#ecc062;box-shadow:inset -4px -4px 0 #0a0806,inset 4px 4px 0 #3a2c18,0 0 0 3px #cf9b38,5px 5px 0 3px rgba(0,0,0,.7)}
+.btn-ghost:hover{background:#2b2014}
+.btn-wine{background:#7b2536;color:#f3c9c2;box-shadow:inset -4px -4px 0 #4f1623,inset 4px 4px 0 #a33a4f,0 0 0 3px #000,5px 5px 0 3px rgba(0,0,0,.7)}
+.btn-wine:hover{background:#8d2c40}
+.btn[disabled]{cursor:default;background:#211910;color:#b9a780;box-shadow:inset -4px -4px 0 #0a0806,inset 4px 4px 0 #2c2216,0 0 0 3px #4a3a1c}
+.label{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#b9a780}
+.coin{display:inline-block;width:22px;height:22px;flex:none;background:#ecc062;box-shadow:inset 0 0 0 4px #9a6f1f;clip-path:polygon(30% 0,70% 0,100% 30%,100% 70%,70% 100%,30% 100%,0 70%,0 30%)}
+.pc{background:#7a5a1e;box-shadow:inset 0 0 0 4px #3a2c18}
+.spr{position:relative;flex:none;display:block;width:calc(48px*var(--s,3));height:calc(64px*var(--s,3));background-image:var(--spr);background-repeat:no-repeat;background-size:calc(var(--sw)*var(--s,3)) calc(var(--sh)*var(--s,3));background-position:calc(var(--col,0)*-48px*var(--s,3)) calc(var(--row,0)*-64px*var(--s,3));image-rendering:pixelated;filter:drop-shadow(4px 4px 0 rgba(0,0,0,.65))}
+.cd{--spr:url("/_blob/c3fdfeb0d0abb6a3af9bd7e5a721b005");--sw:624px;--sh:256px}
+.oscuro .cd{--spr:url("/_blob/f139bd582298bcde19d0c4ec899fae94")}
+.jk{--spr:url("/_blob/e43ea6237996aacaca58fe6b0f8bb5c0");--sw:96px;--sh:64px}
+.oscuro .jk{--spr:url("/_blob/507f130c5d0337cce8a1efee24cdb017")}
+.bk{--spr:url("/_blob/b787f4a8389bb82c9420ebd0935a4b56");--sw:240px;--sh:64px;--col:var(--bc,1);--row:0}
+.r0{--bc:0}.r1{--bc:1}.r2{--bc:2}.r3{--bc:3}.r4{--bc:4}
+.c0{--col:0}.c1{--col:1}
+.poly::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,#ff4d7d,#ffc247,#5cf2a0,#4db8ff,#b56cff,#ff4d7d);background-size:200% 200%;mix-blend-mode:color;opacity:.85;-webkit-mask-image:var(--spr);mask-image:var(--spr);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:calc(var(--sw)*var(--s,3)) calc(var(--sh)*var(--s,3));mask-size:calc(var(--sw)*var(--s,3)) calc(var(--sh)*var(--s,3));-webkit-mask-position:calc(var(--col,0)*-48px*var(--s,3)) calc(var(--row,0)*-64px*var(--s,3));mask-position:calc(var(--col,0)*-48px*var(--s,3)) calc(var(--row,0)*-64px*var(--s,3));animation:poly 3.2s ease-in-out infinite alternate;pointer-events:none}
+@keyframes poly{from{background-position:0 0}to{background-position:100% 100%}}
+.neg{display:block;filter:invert(1) hue-rotate(180deg)}
+.nn{display:block}
+.gone{opacity:.2}
+.seal{position:absolute;left:calc(-5px*var(--s,3));bottom:calc(-5px*var(--s,3));width:calc(16px*var(--s,3));height:calc(16px*var(--s,3));display:flex;align-items:center;justify-content:center;background:#0a0806;clip-path:polygon(30% 0,70% 0,100% 30%,100% 70%,70% 100%,30% 100%,0 70%,0 30%);z-index:2}
+.seal::before{content:"";position:absolute;inset:calc(2px*var(--s,3));background:#5fbf6a;clip-path:polygon(30% 0,70% 0,100% 30%,100% 70%,70% 100%,30% 100%,0 70%,0 30%)}
+.seal svg{position:relative;width:60%;height:60%}
+.jbar{position:absolute;z-index:20;top:36px;left:24px;display:flex;align-items:center;gap:14px;padding:8px 30px 8px 16px;box-sizing:border-box;height:112px}
+.jcount{position:absolute;top:4px;right:5px;font-size:12px;line-height:1;color:#ecc062}
+.jhead{display:flex;flex-direction:column;gap:2px;width:64px}
+.jslots{display:flex;gap:10px}
+.js{position:relative;width:60px;height:80px;flex:none}
+.jb{display:block;padding:0;margin:0;border:0;background:none;cursor:pointer;transition:transform .15s}
+.jb:focus-visible{outline:3px solid #dfeae4;outline-offset:4px}
+.jb.sel{transform:translateY(-8px);filter:drop-shadow(3px 0 0 #ecc062) drop-shadow(-3px 0 0 #ecc062) drop-shadow(0 3px 0 #ecc062) drop-shadow(0 -3px 0 #ecc062)}
+.jempty{width:60px;height:80px;box-sizing:border-box;border:2px dashed #4a3a1c;display:flex;align-items:center;justify-content:center;color:#7a5a1e;font-size:13px}
+.jpop{position:absolute;z-index:25;top:98px;left:50%;transform:translateX(-50%);width:216px;box-sizing:border-box;padding:10px 12px 12px;display:flex;flex-direction:column;gap:6px;border-color:#ecc062}
+.jpop::before{content:"";position:absolute;top:-10px;left:calc(50% - 7px);width:14px;height:14px;background:#15100a;border-left:3px solid #ecc062;border-top:3px solid #ecc062;transform:rotate(45deg)}
+.ed{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#c9a9ff}
+.shelf{position:absolute;z-index:4;left:24px;top:172px;width:884px;height:500px;box-sizing:border-box;display:flex;flex-direction:column;background:linear-gradient(#100c07,#1a130b)}
+.srow{position:relative;display:grid;flex:none}
+.srow::after{content:"";position:absolute;left:-3px;right:-3px;bottom:-5px;height:10px;z-index:2;background:#7a5a1e;box-shadow:inset 0 3px 0 #cf9b38,inset 0 -3px 0 #3a2c18,0 4px 0 rgba(0,0,0,.55)}
+.sc{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 16px 26px;box-sizing:border-box;border-right:2px solid #3a2c18;text-align:center;min-width:0}
+.sc:last-child{border-right:0}
+.sc2{flex-direction:row;align-items:center;text-align:left;gap:12px;padding:14px 14px 26px}
+.sc2 .nm{font-size:18px}
+.pkw{position:relative;width:65px;height:117px;flex:none}
+.pkin{position:absolute;left:0;top:0;width:87px;height:156px;transform:scale(.75);transform-origin:0 0;filter:drop-shadow(4px 4px 0 rgba(0,0,0,.65))}
+.pk{position:absolute;inset:0;background:url("/_blob/99884d89b1fd00a61051ae373bc3a9a5") no-repeat;background-position:calc(var(--c,0)*-95px - 2px) calc(var(--r,0)*-157px - 2px);image-rendering:pixelated}
+.pkfade .pk{opacity:0;animation:pkfade 10.8s linear infinite both}
+.pkfade .pk:nth-child(1){animation-delay:-.6s}.pkfade .pk:nth-child(2){animation-delay:.6s}.pkfade .pk:nth-child(3){animation-delay:1.8s}.pkfade .pk:nth-child(4){animation-delay:3s}.pkfade .pk:nth-child(5){animation-delay:4.2s}.pkfade .pk:nth-child(6){animation-delay:5.4s}.pkfade .pk:nth-child(7){animation-delay:6.6s}.pkfade .pk:nth-child(8){animation-delay:7.8s}.pkfade .pk:nth-child(9){animation-delay:9s}
+@keyframes pkfade{0%{opacity:0}5.56%{opacity:1}11.11%{opacity:1}16.67%{opacity:0}100%{opacity:0}}
+.art{height:140px;width:100%;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 60%,rgba(154,111,38,.35) 0,rgba(21,16,10,0) 70%)}
+.nm{font-size:20px;font-weight:700;line-height:1.05}
+.fx{font-size:14px;line-height:1.15;color:#ecc062}
+.buy{margin-top:auto;width:100%;height:42px;min-height:42px;font-size:19px;padding:0 10px}
+.tph{width:92px;height:136px;box-sizing:border-box;border:3px dashed #8a63c4;background:repeating-linear-gradient(45deg,#1d1236 0 10px,#170e2b 10px 20px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:6px;text-align:center;color:#c9a9ff;font-size:12px;line-height:1.15;filter:drop-shadow(4px 4px 0 rgba(0,0,0,.65))}
+.mini{position:relative;width:88px;height:112px;flex:none}
+.mini .spr{position:absolute}
+.lay{filter:none}
+.cbar{position:absolute;z-index:20;top:36px;left:432px;height:112px;box-sizing:border-box;display:flex;align-items:center;gap:10px;padding:8px 14px}
+.tmini{width:60px;height:80px;flex:none;box-sizing:border-box;border:2px dashed #8a63c4;background:repeating-linear-gradient(45deg,#1d1236 0 8px,#170e2b 8px 16px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;text-align:center;color:#c9a9ff;font-size:10px;line-height:1.1;filter:drop-shadow(3px 3px 0 rgba(0,0,0,.65))}
+.tmini b{font-weight:400;font-size:9px;letter-spacing:.12em;color:#8a63c4}
+.cempty{width:60px;height:80px;flex:none;box-sizing:border-box;border:2px dashed #4a3a1c;display:flex;align-items:center;justify-content:center;color:#7a5a1e;font-size:13px}
+.gear{position:absolute;z-index:30;right:24px;bottom:22px;width:60px;height:60px;min-height:60px;padding:0;flex-direction:column;gap:3px}
+.gear svg{width:24px;height:24px}
+.gear .k{font-size:11px;letter-spacing:.12em;line-height:1}
+.talk{animation:talk 9s ease-in-out infinite}
+@keyframes talk{0%,6%{opacity:0;transform:translateY(6px)}12%,80%{opacity:1;transform:none}88%,100%{opacity:0;transform:translateY(6px)}}
+@media (prefers-reduced-motion:reduce){.stage,.poly::after,.talk,.pkfade .pk{animation:none}.pkfade .pk:first-child{opacity:1}}
+</style>
+</helmet>
+<div class="stage {{deckCls}}">
+  <div class="bunting"></div>
+
+  <!-- Jokers: siempre visibles; toca uno para venderlo -->
+  <div class="panel-q jbar" role="group" aria-label="Tus jokers">
+    <span class="jcount">{{count}}</span>
+    <div class="jslots">
+      <div class="js">
+        <sc-if value="{{j0.has}}" hint-placeholder-val="{{true}}"><button type="button" class="{{j0.cls}}" onClick="{{j0.click}}" aria-label="{{j0.aria}}"><span class="{{j0.wrap}}"><span class="{{j0.spr}}" style="--s:1.25"></span></span></button></sc-if>
+        <sc-if value="{{j0.empty}}" hint-placeholder-val="{{false}}"><span class="jempty">Libre</span></sc-if>
+        <sc-if value="{{j0.sel}}" hint-placeholder-val="{{false}}"><div class="panel-q jpop"><span style="font-size:18px;font-weight:700;line-height:1.05">{{j0.n}}</span><span style="font-size:14px;color:#ecc062;line-height:1.15">{{j0.e}}</span><sc-if value="{{j0.hasEd}}" hint-placeholder-val="{{false}}"><span class="ed">{{j0.edTxt}}</span></sc-if><button class="btn btn-wine" type="button" onClick="{{j0.sell}}" style="min-height:40px;height:40px;font-size:17px;padding:0 12px">Vender <span class="coin" aria-hidden="true" style="width:16px;height:16px"></span>+{{j0.p}}</button></div></sc-if>
+      </div>
+      <div class="js">
+        <sc-if value="{{j1.has}}" hint-placeholder-val="{{true}}"><button type="button" class="{{j1.cls}}" onClick="{{j1.click}}" aria-label="{{j1.aria}}"><span class="{{j1.wrap}}"><span class="{{j1.spr}}" style="--s:1.25"></span></span></button></sc-if>
+        <sc-if value="{{j1.empty}}" hint-placeholder-val="{{false}}"><span class="jempty">Libre</span></sc-if>
+        <sc-if value="{{j1.sel}}" hint-placeholder-val="{{false}}"><div class="panel-q jpop"><span style="font-size:18px;font-weight:700;line-height:1.05">{{j1.n}}</span><span style="font-size:14px;color:#ecc062;line-height:1.15">{{j1.e}}</span><sc-if value="{{j1.hasEd}}" hint-placeholder-val="{{false}}"><span class="ed">{{j1.edTxt}}</span></sc-if><button class="btn btn-wine" type="button" onClick="{{j1.sell}}" style="min-height:40px;height:40px;font-size:17px;padding:0 12px">Vender <span class="coin" aria-hidden="true" style="width:16px;height:16px"></span>+{{j1.p}}</button></div></sc-if>
+      </div>
+      <div class="js">
+        <sc-if value="{{j2.has}}" hint-placeholder-val="{{true}}"><button type="button" class="{{j2.cls}}" onClick="{{j2.click}}" aria-label="{{j2.aria}}"><span class="{{j2.wrap}}"><span class="{{j2.spr}}" style="--s:1.25"></span></span></button></sc-if>
+        <sc-if value="{{j2.empty}}" hint-placeholder-val="{{false}}"><span class="jempty">Libre</span></sc-if>
+        <sc-if value="{{j2.sel}}" hint-placeholder-val="{{false}}"><div class="panel-q jpop"><span style="font-size:18px;font-weight:700;line-height:1.05">{{j2.n}}</span><span style="font-size:14px;color:#ecc062;line-height:1.15">{{j2.e}}</span><sc-if value="{{j2.hasEd}}" hint-placeholder-val="{{false}}"><span class="ed">{{j2.edTxt}}</span></sc-if><button class="btn btn-wine" type="button" onClick="{{j2.sell}}" style="min-height:40px;height:40px;font-size:17px;padding:0 12px">Vender <span class="coin" aria-hidden="true" style="width:16px;height:16px"></span>+{{j2.p}}</button></div></sc-if>
+      </div>
+      <div class="js">
+        <sc-if value="{{j3.has}}" hint-placeholder-val="{{true}}"><button type="button" class="{{j3.cls}}" onClick="{{j3.click}}" aria-label="{{j3.aria}}"><span class="{{j3.wrap}}"><span class="{{j3.spr}}" style="--s:1.25"></span></span></button></sc-if>
+        <sc-if value="{{j3.empty}}" hint-placeholder-val="{{false}}"><span class="jempty">Libre</span></sc-if>
+        <sc-if value="{{j3.sel}}" hint-placeholder-val="{{false}}"><div class="panel-q jpop"><span style="font-size:18px;font-weight:700;line-height:1.05">{{j3.n}}</span><span style="font-size:14px;color:#ecc062;line-height:1.15">{{j3.e}}</span><sc-if value="{{j3.hasEd}}" hint-placeholder-val="{{false}}"><span class="ed">{{j3.edTxt}}</span></sc-if><button class="btn btn-wine" type="button" onClick="{{j3.sell}}" style="min-height:40px;height:40px;font-size:17px;padding:0 12px">Vender <span class="coin" aria-hidden="true" style="width:16px;height:16px"></span>+{{j3.p}}</button></div></sc-if>
+      </div>
+      <div class="js">
+        <sc-if value="{{j4.has}}" hint-placeholder-val="{{true}}"><button type="button" class="{{j4.cls}}" onClick="{{j4.click}}" aria-label="{{j4.aria}}"><span class="{{j4.wrap}}"><span class="{{j4.spr}}" style="--s:1.25"></span></span></button></sc-if>
+        <sc-if value="{{j4.empty}}" hint-placeholder-val="{{false}}"><span class="jempty">Libre</span></sc-if>
+        <sc-if value="{{j4.sel}}" hint-placeholder-val="{{false}}"><div class="panel-q jpop"><span style="font-size:18px;font-weight:700;line-height:1.05">{{j4.n}}</span><span style="font-size:14px;color:#ecc062;line-height:1.15">{{j4.e}}</span><sc-if value="{{j4.hasEd}}" hint-placeholder-val="{{false}}"><span class="ed">{{j4.edTxt}}</span></sc-if><button class="btn btn-wine" type="button" onClick="{{j4.sell}}" style="min-height:40px;height:40px;font-size:17px;padding:0 12px">Vender <span class="coin" aria-hidden="true" style="width:16px;height:16px"></span>+{{j4.p}}</button></div></sc-if>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-q cbar" role="group" aria-label="Tus consumibles: El Trébol y un espacio libre"><span class="tmini" role="img" aria-label="Tarot El Trébol, imagen pendiente"><b>IMAGEN</b>El Trébol</span><span class="cempty">Libre</span></div>
+
+  <header style="position:absolute;z-index:4;top:40px;left:616px;width:300px;display:flex;flex-direction:column;gap:10px">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <h1 style="font-size:36px;line-height:1;font-weight:700;color:#cf9b38;text-shadow:0 4px 0 #7a5a1e,5px 7px 0 #000">TIENDA</h1>
+      <div class="panel" style="display:flex;align-items:center;gap:10px;padding:0 18px;height:48px;box-sizing:border-box">
+        <span class="coin" style="width:24px;height:24px" aria-hidden="true"></span>
+        <span style="font-size:30px;font-weight:700;color:#ecc062">{{coins}}</span>
+      </div>
+    </div>
+    <sc-if value="{{full}}" hint-placeholder-val="{{true}}"><p style="font-size:15px;line-height:1.2;color:#e8705f">Sin espacio para jokers. Toca uno de los tuyos para venderlo.</p></sc-if>
+  </header>
+
+  <!-- Estantería: un solo mueble dividido por líneas internas -->
+  <section class="panel-q shelf" aria-label="Artículos a la venta">
+    <div class="srow" style="height:290px;grid-template-columns:repeat(4,minmax(0,1fr))">
+      <article class="sc">
+        <div class="art"><div class="spr cd poly" style="--s:2;--col:6;--row:2" role="img" aria-label="Siete de picas"><span class="seal" aria-hidden="true"><svg viewBox="0 0 8 8" fill="#0a0806"><circle cx="2.2" cy="2.2" r="1.9"></circle><circle cx="5.8" cy="2.2" r="1.9"></circle><circle cx="2.2" cy="5.8" r="1.9"></circle><circle cx="5.8" cy="5.8" r="1.9"></circle><rect x="3" y="3" width="2" height="2"></rect></svg></span></div></div>
+        <span class="nm">Siete de picas</span><span class="fx">Suerte + Policromo</span>
+        <button class="btn buy" type="button"><span class="coin pc" aria-hidden="true"></span>3</button>
+      </article>
+      <article class="sc">
+        <div class="art"><span class="{{o0.sprCls}}" style="--s:2" role="img" aria-label="Joker Tahúr"></span></div>
+        <span class="nm">Tahúr</span><span class="fx">×1.5 mult cuando sumas 21</span>
+        <button class="btn buy" type="button" onClick="{{o0.buy}}" disabled="{{o0.off}}"><sc-if value="{{o0.showCoin}}" hint-placeholder-val="{{false}}"><span class="coin pc" aria-hidden="true"></span></sc-if>{{o0.txt}}</button>
+      </article>
+      <article class="sc">
+        <div class="art"><span class="{{o1.sprCls}}" style="--s:2" role="img" aria-label="Joker El Contador"></span></div>
+        <span class="nm">El Contador</span><span class="fx">+1 mult por cada carta en tu mano</span>
+        <button class="btn buy" type="button" onClick="{{o1.buy}}" disabled="{{o1.off}}"><sc-if value="{{o1.showCoin}}" hint-placeholder-val="{{false}}"><span class="coin pc" aria-hidden="true"></span></sc-if>{{o1.txt}}</button>
+      </article>
+      <article class="sc">
+        <div class="art"><div class="tph" role="img" aria-label="Imagen pendiente: carta de tarot El Espejo"><span style="font-size:11px;letter-spacing:.14em;color:#8a63c4">IMAGEN</span><span>Tarot<br>El Espejo</span></div></div>
+        <span class="nm">El Espejo</span><span class="fx">Copia 1 carta, con su efecto</span>
+        <button class="btn buy" type="button"><span class="coin pc" aria-hidden="true"></span>3</button>
+      </article>
+    </div>
+    <div class="srow" style="flex:1;grid-template-columns:repeat(4,minmax(0,1fr))">
+      <article class="sc sc2">
+        <div style="width:65px;height:117px;flex:none;display:flex;align-items:center;justify-content:center">
+          <div style="width:62px;height:96px;background:#cf9b38;color:#0a0806;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;box-shadow:inset 0 0 0 4px #9a6f1f,4px 4px 0 rgba(0,0,0,.6);-webkit-mask:radial-gradient(circle 8px at 0 50%,transparent 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 8px at 100% 50%,transparent 98%,#000) right/51% 100% no-repeat;mask:radial-gradient(circle 8px at 0 50%,transparent 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 8px at 100% 50%,transparent 98%,#000) right/51% 100% no-repeat">
+            <span style="font-size:18px;font-weight:700;letter-spacing:.06em">VALE</span>
+            <span style="width:40px;height:4px;background:#0a0806"></span>
+          </div>
+        </div>
+        <div style="flex:1;align-self:stretch;display:flex;flex-direction:column;gap:4px;min-width:0">
+          <span class="nm">Vale de Rebaja</span>
+          <span class="fx">Los rerolls cuestan 2 menos</span>
+          <button class="btn buy" type="button" disabled><span class="coin" aria-hidden="true" style="background:#4a3a1c;box-shadow:inset 0 0 0 4px #2c2216"></span>15</button>
+        </div>
+      </article>
+      <article class="sc sc2">
+        <div class="pkw" role="img" aria-label="Paquete de tarot"><div class="pkin"><span class="pk" style="--c:0;--r:5"></span></div></div>
+        <div style="flex:1;align-self:stretch;display:flex;flex-direction:column;gap:4px;min-width:0">
+          <span class="nm">Paquete de tarot</span>
+          <span class="fx">Elige 1 de 4</span>
+          <a class="btn buy" href="PaqueteTarot.dc.html"><span class="coin pc" aria-hidden="true"></span>4</a>
+        </div>
+      </article>
+      <article class="sc sc2">
+        <div class="pkw" role="img" aria-label="Paquete de runas, cambia de color"><div class="pkin pkfade"><span class="pk" style="--c:0;--r:0"></span><span class="pk" style="--c:1;--r:0"></span><span class="pk" style="--c:2;--r:0"></span><span class="pk" style="--c:3;--r:0"></span><span class="pk" style="--c:4;--r:0"></span><span class="pk" style="--c:5;--r:0"></span><span class="pk" style="--c:6;--r:0"></span><span class="pk" style="--c:7;--r:0"></span><span class="pk" style="--c:8;--r:0"></span></div></div>
+        <div style="flex:1;align-self:stretch;display:flex;flex-direction:column;gap:4px;min-width:0">
+          <span class="nm">Paquete de runas</span>
+          <span class="fx">Elige 1 de 2</span>
+          <a class="btn buy" href="PaqueteRunas.dc.html"><span class="coin pc" aria-hidden="true"></span>4</a>
+        </div>
+      </article>
+      <article class="sc sc2">
+        <div class="pkw" role="img" aria-label="Mega paquete de runas"><div class="pkin"><span class="pk" style="--c:0;--r:12"></span></div></div>
+        <div style="flex:1;align-self:stretch;display:flex;flex-direction:column;gap:4px;min-width:0">
+          <span class="nm">Mega paquete de runas</span>
+          <span class="fx">Elige 2 de 4</span>
+          <a class="btn buy" href="MegaRunas.dc.html"><span class="coin pc" aria-hidden="true"></span>6</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <aside style="position:absolute;z-index:4;top:36px;left:940px;width:316px;display:flex;flex-direction:column;gap:16px">
+    <div class="panel" style="height:170px;box-sizing:border-box;overflow:hidden;background:radial-gradient(ellipse at 50% 85%,#9a6f26 0,#5a3f14 45%,#15100a 90%);display:flex;align-items:flex-end;justify-content:center">
+      <img src="/_blob/68f55cb227f71aefe48d4fd75bd5b8fe" alt="Luvierre, de espaldas, pide silencio con un dedo en los labios" style="height:160px;width:auto;display:block">
+    </div>
+    <div class="panel-q talk" style="position:relative;height:84px;box-sizing:border-box;padding:8px 12px 10px;display:flex;flex-direction:column;gap:2px;border-color:#ecc062">
+      <span style="position:absolute;top:-10px;left:60px;width:14px;height:14px;background:#15100a;border-left:3px solid #ecc062;border-top:3px solid #ecc062;transform:rotate(45deg)"></span>
+      <span class="label" style="color:#ecc062">Luvierre</span>
+      <p style="font-size:16px;line-height:1.2">Psst… ese Tahúr gana solo. ¿Lo vas a dejar ir por unas monedas?</p>
+    </div>
+    <button class="btn btn-wine" type="button" style="height:56px;justify-content:space-between;padding:0 22px">
+      <span>Reroll</span>
+      <span style="display:flex;align-items:center;gap:8px"><span class="coin" aria-hidden="true"></span>5</span>
+    </button>
+    <a class="panel-q" href="MazoCompleto.dc.html" aria-label="Mazo: 55 cartas. Ver y vender cartas" style="height:120px;box-sizing:border-box;display:flex;align-items:center;gap:18px;padding:0 20px;text-decoration:none;color:#dfeae4">
+      <div class="mini" aria-hidden="true">
+        <div class="spr bk lay" style="--s:1.5;left:0;top:12px;filter:brightness(.55)"></div>
+        <div class="spr bk lay" style="--s:1.5;left:3px;top:9px;transform:rotate(.6deg);filter:brightness(.68)"></div>
+        <div class="spr bk lay" style="--s:1.5;left:6px;top:6px;transform:rotate(-.5deg);filter:brightness(.8)"></div>
+        <div class="spr bk lay" style="--s:1.5;left:9px;top:3px;filter:brightness(.9)"></div>
+        <div class="spr bk" style="--s:1.5;left:12px;top:0"></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:2px"><span class="label">Mazo</span><span style="font-size:40px;font-weight:700;line-height:1">55</span><span style="font-size:15px;color:#ecc062;line-height:1.15">Ver y vender cartas</span></div>
+    </a>
+    <a class="btn" href="Dealers.dc.html" style="height:56px;font-size:24px">Siguiente dealer</a>
+  </aside>
+
+  <a class="btn btn-ghost gear" href="ProximosDealers.dc.html" aria-label="Ver los próximos dealers" style="right:168px"><svg viewBox="0 0 16 16" aria-hidden="true"><g fill="currentColor"><rect x="2" y="1" width="3" height="3"></rect><rect x="11" y="1" width="3" height="3"></rect><rect x="4" y="4" width="8" height="2"></rect><rect x="4" y="6" width="8" height="6"></rect><rect x="6" y="12" width="4" height="3"></rect></g><rect x="6" y="8" width="1" height="1" fill="#211910"></rect><rect x="9" y="8" width="1" height="1" fill="#211910"></rect></svg><span class="k" style="font-size:10px;letter-spacing:0">DEALERS</span></a>
+  <a class="btn btn-ghost gear" href="Estadisticas.dc.html" aria-label="Ver estadísticas de la partida" style="right:96px"><svg viewBox="0 0 16 16" aria-hidden="true"><g fill="currentColor"><rect x="1" y="9" width="3" height="6"></rect><rect x="6" y="5" width="3" height="10"></rect><rect x="11" y="1" width="3" height="14"></rect></g></svg><span class="k">STATS</span></a>
+  <a class="btn btn-ghost gear" href="Configuracion.dc.html" aria-label="Configuración (Esc)"><svg viewBox="0 0 16 16" aria-hidden="true"><g fill="currentColor"><rect x="6" y="0" width="4" height="3"></rect><rect x="6" y="13" width="4" height="3"></rect><rect x="0" y="6" width="3" height="4"></rect><rect x="13" y="6" width="3" height="4"></rect><rect x="2" y="2" width="3" height="3"></rect><rect x="11" y="2" width="3" height="3"></rect><rect x="2" y="11" width="3" height="3"></rect><rect x="11" y="11" width="3" height="3"></rect><rect x="3" y="3" width="10" height="10"></rect></g><rect x="6" y="6" width="4" height="4" fill="#211910"></rect></svg><span class="k">ESC</span></a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"mazo":{"editor":"enum","options":["Claro","Oscuro"],"default":"Claro","section":"Cartas"},"reverso":{"editor":"enum","options":["Verde","Rojo","Gris","Azul","Negro"],"default":"Rojo","section":"Cartas"},"$preview":{"width":1280,"height":720}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      coins: 13,
+      jsel: -1,
+      jokers: [
+        { n: 'Calderilla', e: '+20 fichas', p: 2, col: 0, ed: '' },
+        { n: 'El Pícaro', e: '+3 mult', p: 3, col: 1, ed: 'poly' },
+        { n: 'Doble o Nada', e: '×2 mult si sumas 21', p: 4, col: 0, ed: '' },
+        { n: 'La Banca', e: '+2 monedas al ganar una mano', p: 3, col: 1, ed: '' },
+        { n: 'Mano Larga', e: '+2 mult si pides 3 cartas o más', p: 2, col: 0, ed: 'neg' }
+      ],
+      offers: [
+        { n: 'Tahúr', e: '×1.5 mult cuando sumas 21', cost: 7, col: 1, bought: false },
+        { n: 'El Contador', e: '+1 mult por cada carta en tu mano', cost: 5, col: 0, bought: false }
+      ]
+    };
+  }
+  jokerVals(k) {
+    const s = this.state;
+    const j = s.jokers[k];
+    const edTxt = j && j.ed === 'poly' ? 'Policromo · ×1.5 mult' : (j && j.ed === 'neg' ? 'Negativo · +1 espacio' : '');
+    return {
+      has: !!j,
+      empty: !j,
+      sel: !!j && s.jsel === k,
+      cls: 'jb' + (s.jsel === k ? ' sel' : ''),
+      wrap: j && j.ed === 'neg' ? 'neg' : 'nn',
+      spr: 'spr jk c' + (j ? j.col : 0) + (j && j.ed === 'poly' ? ' poly' : ''),
+      n: j ? j.n : '',
+      e: j ? j.e : '',
+      p: j ? j.p : 0,
+      edTxt: edTxt,
+      hasEd: !!edTxt,
+      aria: j ? j.n + '. Toca para ver y vender' : '',
+      click: () => this.setState({ jsel: this.state.jsel === k ? -1 : k }),
+      sell: () => {
+        const js = this.state.jokers.slice();
+        if (!js[k]) return;
+        const price = js[k].p;
+        js[k] = null;
+        this.setState({ jokers: js, jsel: -1, coins: this.state.coins + price });
+      }
+    };
+  }
+  offerVals(i) {
+    const s = this.state;
+    const o = s.offers[i];
+    const full = s.jokers.every(Boolean);
+    return {
+      txt: o.bought ? 'Comprado' : (full ? 'Sin espacio' : String(o.cost)),
+      showCoin: !o.bought && !full,
+      off: o.bought || full || s.coins < o.cost,
+      sprCls: 'spr jk c' + o.col + (o.bought ? ' gone' : ''),
+      buy: () => {
+        const st = this.state;
+        const js = st.jokers.slice();
+        const slot = js.findIndex((x) => !x);
+        const of = st.offers[i];
+        if (of.bought || slot < 0 || st.coins < of.cost) return;
+        js[slot] = { n: of.n, e: of.e, p: Math.floor(of.cost / 2), col: of.col, ed: '' };
+        const offers = st.offers.map((x, k) => (k === i ? Object.assign({}, x, { bought: true }) : x));
+        this.setState({ jokers: js, offers: offers, coins: st.coins - of.cost, jsel: -1 });
+      }
+    };
+  }
+  renderVals() {
+    const s = this.state;
+    const revs = ['Verde', 'Rojo', 'Gris', 'Azul', 'Negro'];
+    const r = Math.max(0, revs.indexOf(this.props.reverso ?? 'Rojo'));
+    const dark = (this.props.mazo ?? 'Claro') === 'Oscuro';
+    return {
+      deckCls: (dark ? 'oscuro ' : '') + 'r' + r,
+      coins: s.coins,
+      count: s.jokers.filter(Boolean).length + '/5',
+      full: s.jokers.every(Boolean),
+      j0: this.jokerVals(0), j1: this.jokerVals(1), j2: this.jokerVals(2), j3: this.jokerVals(3), j4: this.jokerVals(4),
+      o0: this.offerVals(0), o1: this.offerVals(1)
+    };
+  }
+}
+</script>
+</body>
+</html>

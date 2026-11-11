@@ -1,0 +1,176 @@
+/* Extras de las pantallas del juego (lo que no está en design.css) */
+.title-big{display:block;font-size:96px;line-height:.95;color:#cf9b38;letter-spacing:.04em;text-shadow:0 5px 0 #7a5a1e,7px 9px 0 #000}
+.menu-main{width:460px;height:76px;flex-direction:column;align-items:flex-start;gap:0;padding:0 28px}
+.msub{font-size:15px;font-weight:500;letter-spacing:.04em;text-transform:none;color:#3a2a0c}
+.fan1{position:absolute;left:150px;top:110px;transform:rotate(-18deg);transform-origin:50% 100%}
+.fan2{position:absolute;left:215px;top:92px;transform:rotate(2deg);transform-origin:50% 100%}
+.fan3{position:absolute;left:285px;top:112px;transform:rotate(20deg);transform-origin:50% 100%}
+.luv{position:absolute;left:30px;bottom:0;height:640px;width:auto;display:block;animation:idle 4.5s ease-in-out infinite;transform-origin:50% 100%}
+@keyframes idle{50%{transform:translateY(-6px) rotate(.4deg)}}
+.bubble{position:absolute;z-index:5;left:360px;top:44px;width:236px;padding:10px 12px 12px;display:flex;flex-direction:column;gap:4px;border-color:#ecc062}
+.bubble .tail{position:absolute;bottom:-11px;left:36px;width:14px;height:14px;background:#15100a;border-right:3px solid #ecc062;border-bottom:3px solid #ecc062;transform:rotate(45deg)}
+.dcard{position:relative;box-sizing:border-box;display:flex;flex-direction:column;transition:transform .2s}
+.dcard:hover{transform:translateY(-3px)}
+.dpic{height:170px;overflow:hidden;background:radial-gradient(ellipse at 50% 80%,#9a6f26 0,#5a3f14 45%,#15100a 85%);border-bottom:3px solid #cf9b38}
+.dpic img{width:100%;height:100%;object-fit:cover;object-position:60% 0;display:block}
+.boss-fx{background:#2a0f17;border:2px solid #7b2536;padding:8px 12px;display:flex;flex-direction:column;gap:2px}
+.done-tag{font-size:20px;letter-spacing:.1em;text-transform:uppercase;color:#ecc062;text-align:center;border:2px dashed #7a5a1e;padding:12px}
+.seedchip{display:flex;flex-direction:column;padding:4px 16px;height:48px;justify-content:center;color:#dfeae4;cursor:pointer;font-family:inherit}
+.mlayer{background:none!important;animation:none!important;pointer-events:auto;z-index:50}
+.mlayer::after{display:none!important}
+
+/* Mesa */
+.tcs{flex:1;display:flex;justify-content:center;align-items:center;min-width:0}
+.tc{position:relative;flex:none;perspective:800px;transition:margin .25s}
+.tc-in{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .45s cubic-bezier(.3,.7,.3,1)}
+.tc.up .tc-in{transform:rotateY(180deg)}
+.tc-in .spr{position:absolute;left:0;top:0;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.tc-in .tc-front{transform:rotateY(180deg)}
+.tc.pick{cursor:pointer;animation:bob .8s ease-in-out infinite}
+.tc.pick:hover .tc-in{filter:drop-shadow(0 0 10px #ecc062)}
+@keyframes bob{50%{transform:translateY(-8px)}}
+.bbtn{min-height:40px;width:40px;padding:0;font-size:26px}
+.tj{display:inline-block}
+.banner{position:absolute;z-index:30;left:640px;top:360px;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:4px;padding:18px 48px;background:#15100a;border:4px solid #cf9b38;box-shadow:0 0 0 4px #000,8px 8px 0 4px rgba(0,0,0,.7);pointer-events:none}
+.banner .bt{font-size:56px;font-weight:700;line-height:1;text-shadow:0 4px 0 #000}
+.banner .bs{font-size:20px;color:#b9a780}
+.banner.win .bt{color:#ecc062}.banner.lose{border-color:#e8705f}.banner.lose .bt{color:#e8705f}.banner.push .bt{color:#dfeae4}
+.beaten{position:absolute;z-index:32;left:380px;top:200px;width:520px;padding:26px 30px 28px;display:flex;flex-direction:column;gap:10px}
+.cobrar{position:absolute;z-index:6;left:24px;bottom:100px;min-height:44px;font-size:17px}
+
+/* Tienda */
+.soldtag{font-size:22px;letter-spacing:.14em;text-transform:uppercase;color:#7a5a1e;border:3px dashed #4a3a1c;padding:10px 14px;transform:rotate(-8deg)}
+.vale{width:62px;height:96px;background:#cf9b38;color:#0a0806;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;box-shadow:inset 0 0 0 4px #9a6f1f,4px 4px 0 rgba(0,0,0,.6);-webkit-mask:radial-gradient(circle 8px at 0 50%,transparent 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 8px at 100% 50%,transparent 98%,#000) right/51% 100% no-repeat;mask:radial-gradient(circle 8px at 0 50%,transparent 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 8px at 100% 50%,transparent 98%,#000) right/51% 100% no-repeat}
+.deckbtn{height:120px;display:flex;align-items:center;gap:18px;padding:0 20px;color:#dfeae4;cursor:pointer;font-family:inherit}
+.deckbtn:hover{border-color:#cf9b38}
+.js[draggable=true]{cursor:grab}
+
+/* Mazo */
+.dkc{display:block;padding:0;margin:0;border:0;background:none;cursor:pointer}
+.dkc.used{opacity:.4;filter:grayscale(.8)}
+.dkc.selc{outline:3px solid #ecc062;outline-offset:2px}
+.dkc:focus-visible{outline:3px solid #dfeae4;outline-offset:2px}
+
+/* "Animación de cartas" desactivada: sin animaciones infinitas */
+.noanim #app *{animation:none!important}
+.noanim #app .tc-in,.noanim #app .tc{transition-duration:.01s!important}
+
+/* Configuración: más compacta para que quepa el selector de idioma */
+.modal.cfg{gap:12px;padding-top:16px;padding-bottom:16px}
+.modal.cfg .sec{gap:8px}
+.modal.cfg .row{min-height:50px;height:auto}
+
+/* Botones laterales colapsables */
+.sidedots{width:48px;height:48px;min-height:48px;padding:0;display:inline-flex;align-items:center;justify-content:center}
+.dotsv,.dotsv::before,.dotsv::after{display:block;width:6px;height:6px;background:#ecc062;border-radius:0;box-shadow:0 0 0 2px #000}
+.dotsv{position:relative}
+.dotsv::before,.dotsv::after{content:"";position:absolute;left:0}
+.dotsv::before{top:-11px}
+.dotsv::after{top:11px}
+.sidepanel .sidebtn{display:none;min-height:44px;height:auto;padding:6px 10px;font-size:14px;gap:6px}
+.sidepanel .sidebtn .k{font-size:9px;white-space:nowrap;letter-spacing:0}
+.sidepanel.open .sidebtn{display:inline-flex}
+.sidepanel.open .sidedots{border-color:#ecc062}
+
+/* Paquetes */
+.pkwrap{position:absolute;inset:0;z-index:4}
+.pkhead{position:absolute;z-index:5;top:40px;left:616px;right:24px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.pkdeck{position:absolute;z-index:5;top:160px;left:24px;right:24px;overflow:visible}
+.pkdeck .deck{overflow:visible}
+.pkopts{position:absolute;z-index:6;top:372px;left:80px;right:80px;display:grid;gap:18px;align-items:start}
+.pkopts.n4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.pkopts.n6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.pkopts.n3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.pkopts.n2{grid-template-columns:repeat(2,minmax(0,1fr));left:340px;right:340px}
+.tcard{display:flex;flex-direction:column;align-items:center;gap:0}
+.tcard .fc{animation:wave 2.8s ease-in-out infinite}
+.tcard .fc.on{animation:none}
+.timg{display:block;image-rendering:pixelated;filter:drop-shadow(4px 4px 0 rgba(0,0,0,.65))}
+.rimg{display:block;image-rendering:pixelated;filter:drop-shadow(3px 3px 0 rgba(0,0,0,.65))}
+.dcw{position:relative;display:inline-block}
+.dcw.mk{filter:drop-shadow(0 0 0 #ecc062) drop-shadow(3px 0 0 #ecc062) drop-shadow(-3px 0 0 #ecc062) drop-shadow(0 3px 0 #ecc062) drop-shadow(0 -3px 0 #ecc062) drop-shadow(0 0 12px rgba(236,192,98,.7));transform:translateY(-10px) scale(1.06)}
+.dcw.gone{opacity:.18}
+.ctag{position:absolute;right:-4px;bottom:-4px;background:#cf9b38;color:#0a0806;font-size:10px;font-weight:700;line-height:1;padding:2px 3px;border:2px solid #000;max-width:calc(48px * var(--s, 1) + 8px);white-space:normal;word-break:break-word;text-align:right;box-shadow:2px 2px 0 rgba(0,0,0,.5)}
+.dcw.hasfx .spr.cd{outline:2px solid rgba(236,192,98,.55);outline-offset:-1px}
+/* Selección de cartas en mazo (paquetes tarot/runa activa): DEBE verse claramente */
+.pkdeck .deck .dk,
+.pkdeck .deck > .dk{transition:transform .12s ease, filter .12s ease;cursor:pointer;position:relative;z-index:1}
+.pkdeck .deck .dk[disabled],
+.pkdeck .deck > .dk[disabled]{cursor:default;opacity:.78}
+.pkdeck .deck .dk:not(.mk):not([disabled]):hover,
+.pkdeck .deck > .dk:not(.mk):not([disabled]):hover{transform:translateY(-10px) scale(1.1);filter:drop-shadow(0 0 12px rgba(236,192,98,.55));z-index:5}
+.pkdeck .deck .dk.mk,
+.pkdeck .deck > .dk.mk,
+.deck .dk.mk{
+  position:relative !important;
+  z-index:20 !important;
+  animation:none !important;
+  transform:translateY(-10px) scale(1.18) !important;
+  filter:brightness(1.06) drop-shadow(0 2px 6px rgba(236,192,98,.28)) !important;
+  outline:2px solid rgba(236,192,98,.7) !important;
+  outline-offset:2px !important;
+  cursor:pointer;
+}
+.pkdeck .deck .dk.mk::after,
+.pkdeck .deck > .dk.mk::after,
+.deck .dk.mk::after{ content:none !important; }
+.pkdeck .deck .dk.mk .dcw,
+.pkdeck .deck .dk.mk .spr.cd{filter:none}
+.pkdeck .deck .dk.mk .ctag{z-index:40;font-size:13px;padding:2px 6px;background:#ecc062;color:#000;border-color:#000}
+.pkdeck .deck .dk.mk .ctag{z-index:30;font-size:14px;padding:3px 7px;background:#ffe08a}
+.pkfin{position:absolute;z-index:50;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.55)}
+.pkfin .panel{width:520px;padding:28px 32px;display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center}
+.conslot{position:relative;width:60px;height:80px;flex:none;display:flex;align-items:center;justify-content:center}
+.conslot img{max-width:56px;max-height:76px}
+.conslot button{padding:0;margin:0;border:0;background:none;cursor:pointer}
+.conslot button:focus-visible{outline:3px solid #dfeae4;outline-offset:3px}
+.runestrip{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.runechip{display:inline-flex;align-items:center;gap:4px}
+.betquick{display:flex;gap:8px;align-items:center}
+.betquick .btn{min-height:34px;height:34px;font-size:14px;padding:0 10px;letter-spacing:.04em}
+.ansuzpeek{position:absolute;left:128px;top:-6px;display:flex;flex-direction:column;align-items:center;gap:2px;pointer-events:none}
+
+/* Runas (diseño PaqueteRunas): baldosa octogonal dorada */
+.rtw{display:block;filter:drop-shadow(4px 4px 0 rgba(0,0,0,.65))}
+.rt{width:132px;height:172px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 42%,#5a4118 0,#2a1e0c 58%,#15100a 100%);border:4px solid #cf9b38;clip-path:polygon(18px 0,calc(100% - 18px) 0,100% 18px,100% calc(100% - 18px),calc(100% - 18px) 100%,18px 100%,0 calc(100% - 18px),0 18px)}
+.rt .rn{filter:invert(1) sepia(1) saturate(5) hue-rotate(-12deg) brightness(.97)}
+
+/* Más de 5 slots de joker (Negativo, Algiz, Othala): se achican para no pisar los consumibles */
+.jbar:has(.js:nth-child(6)) .jslots{gap:6px}
+.jbar:has(.js:nth-child(6)) .js{width:50px;height:68px}
+.jbar:has(.js:nth-child(6)) .jempty{width:50px;height:68px}
+.jbar:has(.js:nth-child(6)) .spr{--s:1.05}
+
+/* Menú: continuar / cargar */
+.savebtn{flex:1;height:64px;flex-direction:column;align-items:flex-start;gap:0;padding:0 14px;justify-content:center}
+.msub2{font-size:12px;font-weight:500;letter-spacing:.02em;text-transform:none;color:#b9a780}
+
+/* Arrastrar para reordenar (jokers y cartas de la mano) */
+.tj.has,.js[data-slot],#player-cards .tc{touch-action:none;user-select:none}
+.tj.has,.js[data-slot]{cursor:grab}
+#player-cards .tc{cursor:grab}
+.dragging{cursor:grabbing!important;filter:drop-shadow(0 6px 0 rgba(0,0,0,.55))}
+.js[draggable=true]{cursor:grab}
+
+/* Respaldo si faltan los sprites de moneda/ficha: formas octogonales dibujadas con CSS (como el diseño original) */
+.noart-coin .coin{background:#ecc062!important;box-shadow:inset 0 0 0 4px #9a6f1f;clip-path:polygon(30% 0,70% 0,100% 30%,100% 70%,70% 100%,30% 100%,0 70%,0 30%)}
+.noart-chip .chip{background:radial-gradient(circle,#7b2536 0 38%,#dfeae4 40% 58%,#7b2536 60%)!important;clip-path:polygon(30% 0,70% 0,100% 30%,100% 70%,70% 100%,30% 100%,0 70%,0 30%)}
+
+/* Valor actual de un joker que crece (Discípulo del Tarot…): rojo para distinguirlo de la descripción */
+.jcur{color:#ff6a55;font-weight:700;white-space:nowrap;text-shadow:0 1px 0 #000}
+
+/* Agradecimientos: una tarjeta por autor */
+.cgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.ccard{display:flex;gap:16px;align-items:center;padding:14px 16px;background:#100c07;border:2px solid #3a2c18}
+.ccard.me{border:3px solid #cf9b38;background:#1a130b}
+.ccard .av{width:60px;height:60px;flex:none}
+.cbody{display:flex;flex-direction:column;gap:3px;min-width:0}
+.cname{font-size:22px;font-weight:700;line-height:1.1;overflow-wrap:anywhere}
+.crole{font-size:14px;color:#ecc062;line-height:1.2}
+.cfollow{font-size:13px;color:#b9a780;line-height:1.2}
+.cvisit{min-height:34px;height:34px;font-size:14px;padding:0 12px;margin-top:5px;align-self:flex-start}
+.cgrid{max-height:410px;overflow-y:auto;padding-right:8px;scrollbar-color:#cf9b38 #15100a;scrollbar-width:thin}
+.ccard{padding:10px 14px}
+/* La tarjeta del creador ocupa el ancho completo: texto a la izquierda, botón a la derecha */
+.ccard.me .cbody{flex:1}
+.ccard.me .cvisit{flex:none;align-self:center;margin-top:0;margin-left:16px}

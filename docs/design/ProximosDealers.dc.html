@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Próximos dealers</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#000}
+.stage{position:relative;width:1280px;height:720px;overflow:hidden;box-sizing:border-box;font-family:'Pixelify Sans',ui-monospace,monospace;color:#dfeae4;background-color:#0a0806;background-image:url("/_blob/9eb210e033e27fef99b3b1dc11476e9d"),linear-gradient(45deg,#120e08 25%,transparent 25%,transparent 75%,#120e08 75%),linear-gradient(45deg,#120e08 25%,transparent 25%,transparent 75%,#120e08 75%);background-size:256px 256px,64px 64px,64px 64px;background-position:0 0,0 0,32px 32px}
+.stage h1,.stage h2,.stage h3,.stage p{margin:0;font-weight:inherit}
+.bunting{position:absolute;top:0;left:0;right:0;z-index:3;height:24px;background:linear-gradient(#cf9b38,#cf9b38) 0 0/100% 6px no-repeat,conic-gradient(from -45deg at bottom,#cf9b38 90deg,transparent 0) 0 6px/32px 18px repeat-x}
+.panel{background:#15100a;border:3px solid #cf9b38;box-shadow:0 0 0 3px #000,6px 6px 0 3px rgba(0,0,0,.7)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;box-sizing:border-box;font-family:inherit;font-weight:600;font-size:22px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:0;cursor:pointer;background:#cf9b38;color:#0a0806;box-shadow:inset -4px -4px 0 #9a6f1f,inset 4px 4px 0 #f0cf7a,0 0 0 3px #000,5px 5px 0 3px rgba(0,0,0,.7)}
+.btn:focus-visible{outline:3px solid #dfeae4;outline-offset:5px}
+.btn-ghost{background:#211910;color:#ecc062;box-shadow:inset -4px -4px 0 #0a0806,inset 4px 4px 0 #3a2c18,0 0 0 3px #cf9b38,5px 5px 0 3px rgba(0,0,0,.7)}
+.btn-ghost:hover{background:#2b2014}
+.label{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#b9a780}
+.kbd{font-size:13px;padding:3px 6px;border:2px solid #7a5a1e;color:#ecc062;line-height:1;letter-spacing:.1em}
+.coin{display:inline-block;width:18px;height:18px;flex:none;background:#ecc062;box-shadow:inset 0 0 0 3px #9a6f1f;clip-path:polygon(30% 0,70% 0,100% 30%,100% 70%,70% 100%,30% 100%,0 70%,0 30%)}
+.chip{display:inline-block;width:20px;height:20px;flex:none;background:radial-gradient(circle,#7b2536 0 38%,#dfeae4 40% 58%,#7b2536 60%);clip-path:polygon(30% 0,70% 0,100% 30%,100% 70%,70% 100%,30% 100%,0 70%,0 30%)}
+.pip{display:inline-block;width:12px;height:12px;box-sizing:border-box;border:2px solid #7a5a1e}
+.dim{position:absolute;inset:0;z-index:10;background:rgba(5,4,2,.8)}
+.modal{position:absolute;z-index:20;left:110px;top:44px;width:1060px;box-sizing:border-box;padding:22px 30px 26px;display:flex;flex-direction:column;gap:16px}
+.dl{position:relative;display:flex;gap:14px;padding:12px;background:#100c07;border:2px solid #3a2c18;min-width:0}
+.pic{width:96px;height:120px;flex:none;overflow:hidden;background:radial-gradient(ellipse at 50% 80%,#7a5418 0,#3a2a10 55%,#15100a 90%);border:2px solid #7a5a1e}
+.pic img{width:100%;height:100%;object-fit:cover;object-position:50% 0;display:block}
+.tag{position:absolute;top:-12px;right:12px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:2px 8px;border:2px solid #000}
+.lock{width:96px;height:96px;flex:none;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(45deg,#15100a 0 8px,#100c07 8px 16px);border:2px dashed #4a3a1c;color:#4a3a1c;font-size:40px;font-weight:700}
+</style>
+</helmet>
+<div class="stage">
+  <div class="bunting"></div>
+  <div class="dim" aria-hidden="true"></div>
+
+  <section class="panel modal" role="dialog" aria-modal="true" aria-labelledby="pd-title">
+    <header style="display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;flex-direction:column;gap:2px">
+        <span class="label">Solo para ver · no se pueden elegir ni saltar desde aquí</span>
+        <h1 id="pd-title" style="font-size:40px;line-height:1;font-weight:700;color:#cf9b38;text-shadow:0 4px 0 #7a5a1e,5px 7px 0 #000">PRÓXIMOS DEALERS</h1>
+      </div>
+      <a class="btn btn-ghost" href="Mesa.dc.html" style="min-height:48px;font-size:18px;padding:0 16px">Cerrar <span class="kbd">ESC</span></a>
+    </header>
+
+    <span class="label" style="color:#ecc062">Mesa 1</span>
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:-4px">
+      <article class="dl" style="border-color:#cf9b38">
+        <span class="tag" style="background:#cf9b38;color:#0a0806">Ahora</span>
+        <div class="pic"><img src="/_blob/9da685e417e34915e7da9500feaf3f82" alt="Pip"></div>
+        <div style="display:flex;flex-direction:column;gap:6px;min-width:0">
+          <span style="font-size:24px;font-weight:700;line-height:1">Pip</span>
+          <span class="label" style="font-size:12px">Dealer 1 · Fácil</span>
+          <span style="display:flex;align-items:center;gap:8px;font-size:18px"><span class="chip" aria-hidden="true"></span>Meta 205</span>
+          <span style="display:flex;align-items:center;gap:8px;font-size:18px;color:#ecc062"><span class="coin" aria-hidden="true"></span>Recompensa 3</span>
+          <span style="display:flex;align-items:center;gap:5px;font-size:14px;color:#b9a780"><span class="pip" style="background:#cf9b38;border-color:#cf9b38"></span><span class="pip"></span><span class="pip"></span>&nbsp;gana 2 de 3</span>
+        </div>
+      </article>
+      <article class="dl">
+        <span class="tag" style="background:#211910;color:#ecc062;border-color:#7a5a1e">Siguiente</span>
+        <div class="pic"><img src="/_blob/6b669d4437d20d4e09e1dd51f08f2113" alt="Mordaz"></div>
+        <div style="display:flex;flex-direction:column;gap:6px;min-width:0">
+          <span style="font-size:24px;font-weight:700;line-height:1">Mordaz</span>
+          <span class="label" style="font-size:12px">Dealer 2 · Medio</span>
+          <span style="display:flex;align-items:center;gap:8px;font-size:18px"><span class="chip" aria-hidden="true"></span>Meta 308</span>
+          <span style="display:flex;align-items:center;gap:8px;font-size:18px;color:#ecc062"><span class="coin" aria-hidden="true"></span>Recompensa 4</span>
+          <span style="display:flex;align-items:center;gap:5px;font-size:14px;color:#b9a780"><span class="pip"></span><span class="pip"></span><span class="pip"></span>&nbsp;gana 2 de 3</span>
+        </div>
+      </article>
+      <article class="dl" style="border-color:#7b2536">
+        <span class="tag" style="background:#7b2536;color:#f3c9c2">Jefe</span>
+        <div class="pic" style="border-color:#7b2536"><img src="/_blob/525eb41f4db13c6c233b8b7fa05eec0c" alt="El Muro"></div>
+        <div style="display:flex;flex-direction:column;gap:6px;min-width:0">
+          <span style="font-size:24px;font-weight:700;line-height:1;color:#e8705f">El Muro</span>
+          <span style="display:flex;align-items:center;gap:8px;font-size:18px"><span class="chip" aria-hidden="true"></span>Meta 615</span>
+          <span style="display:flex;align-items:center;gap:8px;font-size:18px;color:#ecc062"><span class="coin" aria-hidden="true"></span>Recompensa 5</span>
+          <span style="display:flex;align-items:center;gap:5px;font-size:14px;color:#e8705f"><span class="pip" style="border-color:#e8705f"></span><span class="pip" style="border-color:#e8705f"></span><span class="pip" style="border-color:#e8705f"></span><span class="pip" style="border-color:#e8705f"></span><span class="pip" style="border-color:#e8705f"></span>&nbsp;gana 3 de 5</span>
+          <span style="font-size:14px;line-height:1.2;color:#f3c9c2">Efecto: tu primera mano de la ronda no suma fichas.</span>
+        </div>
+      </article>
+    </div>
+
+    <span class="label" style="margin-top:6px">Mesa 2</span>
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:-4px">
+      <article class="dl" style="align-items:center"><div class="lock" aria-hidden="true">?</div><div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:22px;font-weight:700;color:#7a5a1e">???</span><span style="font-size:15px;color:#b9a780;line-height:1.2">Se revela al vencer a El Muro</span></div></article>
+      <article class="dl" style="align-items:center"><div class="lock" aria-hidden="true">?</div><div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:22px;font-weight:700;color:#7a5a1e">???</span><span style="font-size:15px;color:#b9a780;line-height:1.2">Se revela al vencer a El Muro</span></div></article>
+      <article class="dl" style="align-items:center;border-color:#4f1623"><div class="lock" aria-hidden="true" style="border-color:#4f1623;color:#4f1623">?</div><div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:22px;font-weight:700;color:#7b2536">Jefe ???</span><span style="font-size:15px;color:#b9a780;line-height:1.2">Se revela al vencer a El Muro</span></div></article>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":720}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

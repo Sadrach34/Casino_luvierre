@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Fin del paquete</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#000}
+.stage{position:relative;width:1280px;height:720px;overflow:hidden;box-sizing:border-box;font-family:'Pixelify Sans',ui-monospace,monospace;color:#dfeae4;background-color:#0a0806;background-image:url("/_blob/9eb210e033e27fef99b3b1dc11476e9d"),linear-gradient(45deg,#120e08 25%,transparent 25%,transparent 75%,#120e08 75%),linear-gradient(45deg,#120e08 25%,transparent 25%,transparent 75%,#120e08 75%);background-size:256px 256px,64px 64px,64px 64px;background-position:0 0,0 0,32px 32px}
+.stage::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:40;background:radial-gradient(ellipse at 50% 50%,transparent 60%,rgba(0,0,0,.55) 100%)}
+.stage h1,.stage h2,.stage h3,.stage p{margin:0;font-weight:inherit}
+.bunting{position:absolute;top:0;left:0;right:0;z-index:3;height:24px;background:linear-gradient(#cf9b38,#cf9b38) 0 0/100% 6px no-repeat,conic-gradient(from -45deg at bottom,#cf9b38 90deg,transparent 0) 0 6px/32px 18px repeat-x}
+.panel{background:#15100a;border:3px solid #cf9b38;box-shadow:0 0 0 3px #000,6px 6px 0 3px rgba(0,0,0,.7)}
+.panel-q{background:#15100a;border:3px solid #7a5a1e;box-shadow:0 0 0 3px #000,5px 5px 0 3px rgba(0,0,0,.6)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;box-sizing:border-box;font-family:inherit;font-weight:600;font-size:22px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:0;cursor:pointer;background:#cf9b38;color:#0a0806;box-shadow:inset -4px -4px 0 #9a6f1f,inset 4px 4px 0 #f0cf7a,0 0 0 3px #000,5px 5px 0 3px rgba(0,0,0,.7)}
+.btn:focus-visible{outline:3px solid #dfeae4;outline-offset:5px}
+.btn-ghost{background:#211910;color:#ecc062;box-shadow:inset -4px -4px 0 #0a0806,inset 4px 4px 0 #3a2c18,0 0 0 3px #cf9b38,5px 5px 0 3px rgba(0,0,0,.7)}
+.label{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#b9a780}
+.coin{display:inline-block;width:22px;height:22px;flex:none;background:#ecc062;box-shadow:inset 0 0 0 4px #9a6f1f;clip-path:polygon(30% 0,70% 0,100% 30%,100% 70%,70% 100%,30% 100%,0 70%,0 30%)}
+.spr{position:relative;flex:none;display:block;width:calc(48px*var(--s,3));height:calc(64px*var(--s,3));background-image:var(--spr);background-repeat:no-repeat;background-size:calc(var(--sw)*var(--s,3)) calc(var(--sh)*var(--s,3));background-position:calc(var(--col,0)*-48px*var(--s,3)) calc(var(--row,0)*-64px*var(--s,3));image-rendering:pixelated;filter:drop-shadow(4px 4px 0 rgba(0,0,0,.65))}
+.cd{--spr:url("/_blob/c3fdfeb0d0abb6a3af9bd7e5a721b005");--sw:624px;--sh:256px}
+.oscuro .cd{--spr:url("/_blob/f139bd582298bcde19d0c4ec899fae94")}
+.jk{--spr:url("/_blob/e43ea6237996aacaca58fe6b0f8bb5c0");--sw:96px;--sh:64px}
+.oscuro .jk{--spr:url("/_blob/507f130c5d0337cce8a1efee24cdb017")}
+.bk{--spr:url("/_blob/b787f4a8389bb82c9420ebd0935a4b56");--sw:240px;--sh:64px;--col:1;--row:0}
+.poly::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,#ff4d7d,#ffc247,#5cf2a0,#4db8ff,#b56cff,#ff4d7d);background-size:200% 200%;mix-blend-mode:color;opacity:.85;-webkit-mask-image:var(--spr);mask-image:var(--spr);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:calc(var(--sw)*var(--s,3)) calc(var(--sh)*var(--s,3));mask-size:calc(var(--sw)*var(--s,3)) calc(var(--sh)*var(--s,3));-webkit-mask-position:calc(var(--col,0)*-48px*var(--s,3)) calc(var(--row,0)*-64px*var(--s,3));mask-position:calc(var(--col,0)*-48px*var(--s,3)) calc(var(--row,0)*-64px*var(--s,3));animation:poly 3.2s ease-in-out infinite alternate;pointer-events:none}
+@keyframes poly{from{background-position:0 0}to{background-position:100% 100%}}
+.neg{display:block;filter:invert(1) hue-rotate(180deg)}
+.jbar{position:absolute;z-index:20;top:36px;left:24px;display:flex;align-items:center;gap:10px;padding:8px 30px 8px 16px;box-sizing:border-box;height:112px}
+.jcount{position:absolute;top:4px;right:5px;font-size:12px;line-height:1;color:#ecc062}
+.cbar{position:absolute;z-index:20;top:36px;left:432px;height:112px;box-sizing:border-box;display:flex;align-items:center;gap:10px;padding:8px 14px}
+.tmini{width:60px;height:80px;flex:none;box-sizing:border-box;border:2px dashed #8a63c4;background:repeating-linear-gradient(45deg,#1d1236 0 8px,#170e2b 8px 16px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;text-align:center;color:#c9a9ff;font-size:10px;line-height:1.1}
+.tmini b{font-weight:400;font-size:9px;letter-spacing:.12em;color:#8a63c4}
+.cempty{width:60px;height:80px;flex:none;box-sizing:border-box;border:2px dashed #4a3a1c;display:flex;align-items:center;justify-content:center;color:#7a5a1e;font-size:13px}
+/* Cartas del mazo: al terminar el paquete regresan rápido, una a una, al mazo */
+.fly{position:absolute;top:194px;left:calc(200px + var(--i)*112px);z-index:7;transform-origin:0 0;animation:home 5s ease-in infinite;animation-delay:calc(var(--i)*.15s)}
+@keyframes home{0%,30%{transform:none;opacity:1}44%{transform:translate(calc(974px - var(--i)*112px),325px) scale(.75);opacity:1}47%,100%{transform:translate(calc(974px - var(--i)*112px),325px) scale(.75);opacity:0}}
+.dpile{position:absolute;z-index:6;right:30px;bottom:96px;width:80px;height:106px;display:block;text-decoration:none}
+.dcount{position:absolute;right:-8px;bottom:-10px;background:#cf9b38;color:#0a0806;font-size:16px;font-weight:700;line-height:1;padding:3px 6px;border:2px solid #000}
+.gear{position:absolute;z-index:30;right:24px;bottom:22px;width:60px;height:60px;min-height:60px;padding:0;flex-direction:column;gap:3px}
+.gear svg{width:24px;height:24px}
+.gear .k{font-size:11px;letter-spacing:.12em;line-height:1}
+@media (prefers-reduced-motion:reduce){.fly,.poly::after{animation:none}}
+</style>
+</helmet>
+<div class="stage {{deckCls}}">
+  <div class="bunting"></div>
+
+  <div class="panel-q jbar" role="group" aria-label="Tus jokers, 5 de 5">
+    <span class="jcount" aria-hidden="true">5/5</span>
+    <span class="spr jk" style="--s:1.25;--col:0" role="img" aria-label="Calderilla"></span>
+    <span class="spr jk poly" style="--s:1.25;--col:1" role="img" aria-label="El Pícaro, Policromo"></span>
+    <span class="spr jk" style="--s:1.25;--col:0" role="img" aria-label="Doble o Nada"></span>
+    <span class="spr jk" style="--s:1.25;--col:1" role="img" aria-label="La Banca"></span>
+    <span class="neg"><span class="spr jk" style="--s:1.25;--col:0" role="img" aria-label="Mano Larga, Negativo"></span></span>
+  </div>
+  <div class="panel-q cbar" role="group" aria-label="Tus consumibles: El Trébol y un espacio libre"><span class="tmini" role="img" aria-label="Tarot El Trébol, imagen pendiente"><b>IMAGEN</b>El Trébol</span><span class="cempty">Libre</span></div>
+
+  <header style="position:absolute;z-index:4;top:40px;left:616px;right:24px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px">
+    <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px">
+      <span class="label">Listo · El Trébol usado</span>
+      <h1 style="font-size:30px;line-height:1.05;font-weight:700;color:#cf9b38;text-shadow:0 4px 0 #7a5a1e,5px 7px 0 #000">PAQUETE DE TAROT</h1>
+    </div>
+    <div style="display:flex;align-items:center;gap:16px;flex:none">
+      <a class="btn" href="Tienda.dc.html" style="width:160px;height:48px;min-height:48px;font-size:20px">Continuar</a>
+      <div class="panel" style="display:flex;align-items:center;gap:10px;padding:0 18px;height:48px;box-sizing:border-box"><span class="coin" aria-hidden="true"></span><span style="font-size:28px;font-weight:700;color:#ecc062">9</span></div>
+    </div>
+  </header>
+
+  <span class="label" style="position:absolute;z-index:5;top:162px;left:0;right:0;text-align:center">Tus cartas regresan al mazo</span>
+
+  <span class="spr cd fly poly" style="--s:2;--i:0;--col:12;--row:2" role="img" aria-label="Rey de picas"></span>
+  <span class="spr cd fly" style="--s:2;--i:1;--col:6;--row:3" role="img" aria-label="Siete de diamantes"></span>
+  <span class="spr cd fly" style="--s:2;--i:2;--col:0;--row:0" role="img" aria-label="As de tréboles"></span>
+  <span class="spr cd fly" style="--s:2;--i:3;--col:9;--row:1" role="img" aria-label="Diez de corazones, ahora con Suerte"></span>
+  <span class="spr cd fly" style="--s:2;--i:4;--col:12;--row:2" role="img" aria-label="Rey de picas"></span>
+  <span class="spr cd fly poly" style="--s:2;--i:5;--col:2;--row:0" role="img" aria-label="Tres de tréboles"></span>
+  <span class="spr cd fly" style="--s:2;--i:6;--col:11;--row:3" role="img" aria-label="Reina de diamantes"></span>
+  <span class="spr cd fly" style="--s:2;--i:7;--col:8;--row:2" role="img" aria-label="Nueve de picas, ahora con Suerte"></span>
+
+  <a class="dpile" href="MazoCompleto.dc.html" aria-label="Tu mazo: 38 cartas. Ver mazo completo">
+    <span class="spr bk" style="--s:1.5;position:absolute;left:0;top:8px;filter:brightness(.55)"></span>
+    <span class="spr bk" style="--s:1.5;position:absolute;left:3px;top:4px;filter:brightness(.78)"></span>
+    <span class="spr bk" style="--s:1.5;position:absolute;left:6px;top:0"></span>
+    <span class="dcount">38</span>
+  </a>
+
+  <a class="btn btn-ghost gear" href="ProximosDealers.dc.html" aria-label="Ver los próximos dealers" style="right:168px"><svg viewBox="0 0 16 16" aria-hidden="true"><g fill="currentColor"><rect x="2" y="1" width="3" height="3"></rect><rect x="11" y="1" width="3" height="3"></rect><rect x="4" y="4" width="8" height="2"></rect><rect x="4" y="6" width="8" height="6"></rect><rect x="6" y="12" width="4" height="3"></rect></g><rect x="6" y="8" width="1" height="1" fill="#211910"></rect><rect x="9" y="8" width="1" height="1" fill="#211910"></rect></svg><span class="k" style="font-size:10px;letter-spacing:0">DEALERS</span></a>
+  <a class="btn btn-ghost gear" href="Estadisticas.dc.html" aria-label="Ver estadísticas de la partida" style="right:96px"><svg viewBox="0 0 16 16" aria-hidden="true"><g fill="currentColor"><rect x="1" y="9" width="3" height="6"></rect><rect x="6" y="5" width="3" height="10"></rect><rect x="11" y="1" width="3" height="14"></rect></g></svg><span class="k">STATS</span></a>
+  <a class="btn btn-ghost gear" href="Configuracion.dc.html" aria-label="Configuración (Esc)"><svg viewBox="0 0 16 16" aria-hidden="true"><g fill="currentColor"><rect x="6" y="0" width="4" height="3"></rect><rect x="6" y="13" width="4" height="3"></rect><rect x="0" y="6" width="3" height="4"></rect><rect x="13" y="6" width="3" height="4"></rect><rect x="2" y="2" width="3" height="3"></rect><rect x="11" y="2" width="3" height="3"></rect><rect x="2" y="11" width="3" height="3"></rect><rect x="11" y="11" width="3" height="3"></rect><rect x="3" y="3" width="10" height="10"></rect></g><rect x="6" y="6" width="4" height="4" fill="#211910"></rect></svg><span class="k">ESC</span></a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"mazo":{"editor":"enum","options":["Claro","Oscuro"],"default":"Claro","section":"Cartas"},"$preview":{"width":1280,"height":720}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { deckCls: (this.props.mazo ?? 'Claro') === 'Oscuro' ? 'oscuro' : '' };
+  }
+}
+</script>
+</body>
+</html>

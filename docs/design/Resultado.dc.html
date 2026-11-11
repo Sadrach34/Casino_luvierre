@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Resultado del dealer</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#000}
+.stage{position:relative;width:1280px;height:720px;overflow:hidden;box-sizing:border-box;font-family:'Pixelify Sans',ui-monospace,monospace;color:#dfeae4;background-color:#0a0806;background-image:url("/_blob/9eb210e033e27fef99b3b1dc11476e9d"),linear-gradient(45deg,#120e08 25%,transparent 25%,transparent 75%,#120e08 75%),linear-gradient(45deg,#120e08 25%,transparent 25%,transparent 75%,#120e08 75%);background-size:256px 256px,64px 64px,64px 64px;background-position:0 0,0 0,32px 32px;animation:bgmove 14s linear infinite}
+@keyframes bgmove{to{background-position:256px 256px,256px 256px,288px 288px}}
+.stage::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:40;background:radial-gradient(ellipse at 50% 50%,transparent 60%,rgba(0,0,0,.55) 100%)}
+.stage h1,.stage h2,.stage h3,.stage p{margin:0;font-weight:inherit}
+.bunting{position:absolute;top:0;left:0;right:0;z-index:3;height:24px;background:linear-gradient(#cf9b38,#cf9b38) 0 0/100% 6px no-repeat,conic-gradient(from -45deg at bottom,#cf9b38 90deg,transparent 0) 0 6px/32px 18px repeat-x}
+.panel{background:#15100a;border:3px solid #cf9b38;box-shadow:0 0 0 3px #000,6px 6px 0 3px rgba(0,0,0,.7)}
+.panel-q{background:#15100a;border:3px solid #7a5a1e;box-shadow:0 0 0 3px #000,5px 5px 0 3px rgba(0,0,0,.6)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;box-sizing:border-box;font-family:inherit;font-weight:600;font-size:22px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:0;cursor:pointer;background:#cf9b38;color:#0a0806;box-shadow:inset -4px -4px 0 #9a6f1f,inset 4px 4px 0 #f0cf7a,0 0 0 3px #000,5px 5px 0 3px rgba(0,0,0,.7)}
+.btn:hover{background:#e0ad46}
+.btn:focus-visible{outline:3px solid #dfeae4;outline-offset:5px}
+.btn-ghost{background:#211910;color:#ecc062;box-shadow:inset -4px -4px 0 #0a0806,inset 4px 4px 0 #3a2c18,0 0 0 3px #cf9b38,5px 5px 0 3px rgba(0,0,0,.7)}
+.btn-ghost:hover{background:#2b2014}
+.label{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#b9a780}
+.coin{display:inline-block;width:22px;height:22px;flex:none;background:#ecc062;box-shadow:inset 0 0 0 4px #9a6f1f;clip-path:polygon(30% 0,70% 0,100% 30%,100% 70%,70% 100%,30% 100%,0 70%,0 30%)}
+.spr{position:relative;flex:none;display:block;width:calc(48px*var(--s,3));height:calc(64px*var(--s,3));background-image:var(--spr);background-repeat:no-repeat;background-size:calc(var(--sw)*var(--s,3)) calc(var(--sh)*var(--s,3));background-position:calc(var(--col,0)*-48px*var(--s,3)) calc(var(--row,0)*-64px*var(--s,3));image-rendering:pixelated;filter:drop-shadow(4px 4px 0 rgba(0,0,0,.65))}
+.jk{--spr:url("/_blob/e43ea6237996aacaca58fe6b0f8bb5c0");--sw:96px;--sh:64px}
+.oscuro .jk{--spr:url("/_blob/507f130c5d0337cce8a1efee24cdb017")}
+.poly::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,#ff4d7d,#ffc247,#5cf2a0,#4db8ff,#b56cff,#ff4d7d);background-size:200% 200%;mix-blend-mode:color;opacity:.85;-webkit-mask-image:var(--spr);mask-image:var(--spr);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:calc(var(--sw)*var(--s,3)) calc(var(--sh)*var(--s,3));mask-size:calc(var(--sw)*var(--s,3)) calc(var(--sh)*var(--s,3));-webkit-mask-position:calc(var(--col,0)*-48px*var(--s,3)) calc(var(--row,0)*-64px*var(--s,3));mask-position:calc(var(--col,0)*-48px*var(--s,3)) calc(var(--row,0)*-64px*var(--s,3));animation:poly 3.2s ease-in-out infinite alternate;pointer-events:none}
+@keyframes poly{from{background-position:0 0}to{background-position:100% 100%}}
+.neg{display:block;filter:invert(1) hue-rotate(180deg)}
+.jbar{position:absolute;z-index:20;top:36px;left:24px;display:flex;align-items:center;gap:14px;padding:8px 30px 8px 16px;box-sizing:border-box;height:112px}
+.jcount{position:absolute;top:4px;right:5px;font-size:12px;line-height:1;color:#ecc062}
+.jhead{display:flex;flex-direction:column;gap:2px;width:64px}
+.jslots{display:flex;gap:10px}
+.js{position:relative;width:60px;height:80px;flex:none}
+.row{display:flex;align-items:center;justify-content:space-between;gap:16px;height:52px;border-bottom:2px dashed #3a2c18}
+.amt{display:flex;align-items:center;gap:10px;font-size:32px;font-weight:700;color:#ecc062}
+.pp{display:inline-block;width:14px;height:14px;box-sizing:border-box}
+.cbar{position:absolute;z-index:20;top:36px;left:432px;height:112px;box-sizing:border-box;display:flex;align-items:center;gap:10px;padding:8px 14px}
+.tmini{width:60px;height:80px;flex:none;box-sizing:border-box;border:2px dashed #8a63c4;background:repeating-linear-gradient(45deg,#1d1236 0 8px,#170e2b 8px 16px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;text-align:center;color:#c9a9ff;font-size:10px;line-height:1.1;filter:drop-shadow(3px 3px 0 rgba(0,0,0,.65))}
+.tmini b{font-weight:400;font-size:9px;letter-spacing:.12em;color:#8a63c4}
+.cempty{width:60px;height:80px;flex:none;box-sizing:border-box;border:2px dashed #4a3a1c;display:flex;align-items:center;justify-content:center;color:#7a5a1e;font-size:13px}
+.gear{position:absolute;z-index:30;right:24px;bottom:22px;width:60px;height:60px;min-height:60px;padding:0;flex-direction:column;gap:3px}
+.gear svg{width:24px;height:24px}
+.gear .k{font-size:11px;letter-spacing:.12em;line-height:1}
+@media (prefers-reduced-motion:reduce){.stage,.poly::after{animation:none}}
+</style>
+</helmet>
+<div class="stage {{deckCls}}">
+  <div class="bunting"></div>
+
+  <div class="panel-q jbar" role="group" aria-label="Tus jokers, 5 de 5">
+    <span class="jcount" aria-hidden="true">5/5</span>
+    <div class="jslots">
+      <div class="js"><span class="spr jk" style="--s:1.25;--col:0" role="img" aria-label="Calderilla"></span></div>
+      <div class="js"><span class="spr jk poly" style="--s:1.25;--col:1" role="img" aria-label="El Pícaro, Policromo"></span></div>
+      <div class="js"><span class="spr jk" style="--s:1.25;--col:0" role="img" aria-label="Doble o Nada"></span></div>
+      <div class="js"><span class="spr jk" style="--s:1.25;--col:1" role="img" aria-label="La Banca"></span></div>
+      <div class="js"><span class="neg"><span class="spr jk" style="--s:1.25;--col:0" role="img" aria-label="Mano Larga, Negativo"></span></span></div>
+    </div>
+  </div>
+
+  <div class="panel-q cbar" role="group" aria-label="Tus consumibles: El Trébol y un espacio libre"><span class="tmini" role="img" aria-label="Tarot El Trébol, imagen pendiente"><b>IMAGEN</b>El Trébol</span><span class="cempty">Libre</span></div>
+
+  <div style="position:absolute;z-index:2;left:60px;top:150px;width:480px;height:570px">
+    <div style="position:absolute;left:0;top:10px;width:480px;height:560px;background:radial-gradient(ellipse at 55% 60%,#9a6f26 0,#5a3f14 40%,rgba(20,16,10,0) 70%)"></div>
+    <img src="/_blob/46b2e66879ae811a3113aef37384a63a" alt="Pip, derrotado, se tapa la cara con la mano" style="position:absolute;left:40px;bottom:0;height:540px;width:auto;display:block">
+  </div>
+
+  <section class="panel" style="position:absolute;z-index:4;left:680px;top:36px;width:560px;box-sizing:border-box;padding:30px 36px 34px;display:flex;flex-direction:column;gap:6px">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:2px">
+      <span class="label">Dealer 1 de 3</span>
+      <span class="pp" style="background:#cf9b38"></span><span class="pp" style="border:2px solid #7a5a1e"></span><span class="pp" style="border:2px solid #7a5a1e"></span>
+    </div>
+    <h1 style="font-size:52px;line-height:1;font-weight:700;color:#cf9b38;text-shadow:0 4px 0 #7a5a1e,5px 7px 0 #000">Pip vencido</h1>
+    <div style="display:flex;align-items:center;gap:10px;margin:8px 0 14px">
+      <span class="label">Victorias</span>
+      <span style="display:flex;gap:6px" aria-label="2 victorias de 3 rondas"><span class="pp" style="background:#cf9b38;width:16px;height:16px"></span><span class="pp" style="background:#cf9b38;width:16px;height:16px"></span><span class="pp" style="border:2px solid #7a5a1e;width:16px;height:16px"></span></span>
+      <span style="font-size:20px;color:#b9a780">2 de 3 · última ronda: 252 de 205</span>
+    </div>
+    <div class="row"><div style="display:flex;flex-direction:column"><span style="font-size:24px;font-weight:600">Recompensa del dealer</span><span style="font-size:15px;color:#b9a780">Pip · Dealer 1</span></div><span class="amt"><span class="coin" aria-hidden="true"></span>+3</span></div>
+    <div class="row"><div style="display:flex;flex-direction:column"><span style="font-size:24px;font-weight:600">Manos sobrantes</span><span style="font-size:15px;color:#b9a780">3 manos sin usar × 1</span></div><span class="amt"><span class="coin" aria-hidden="true"></span>+3</span></div>
+    <div class="row"><div style="display:flex;flex-direction:column"><span style="font-size:24px;font-weight:600">Fichas extra</span><span style="font-size:15px;color:#b9a780">47 por encima de la meta</span></div><span class="amt"><span class="coin" aria-hidden="true"></span>+1</span></div>
+    <div class="row"><div style="display:flex;flex-direction:column"><span style="font-size:24px;font-weight:600">Interés</span><span style="font-size:15px;color:#b9a780">1 por cada 5 monedas guardadas</span></div><span class="amt"><span class="coin" aria-hidden="true"></span>+1</span></div>
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-top:14px">
+      <div style="display:flex;flex-direction:column"><span class="label">Total ganado</span><span style="display:flex;align-items:center;gap:12px;font-size:56px;line-height:1;font-weight:700;color:#ecc062"><span class="coin" style="width:34px;height:34px" aria-hidden="true"></span>+8</span></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end"><span class="label">Tus monedas</span><span style="font-size:30px;font-weight:600">5 → 13</span></div>
+    </div>
+    <a class="btn" href="Tienda.dc.html" style="margin-top:22px;width:100%;height:64px;font-size:26px">Ir a la tienda</a>
+  </section>
+
+  <a class="btn btn-ghost gear" href="Configuracion.dc.html" aria-label="Configuración (Esc)"><svg viewBox="0 0 16 16" aria-hidden="true"><g fill="currentColor"><rect x="6" y="0" width="4" height="3"></rect><rect x="6" y="13" width="4" height="3"></rect><rect x="0" y="6" width="3" height="4"></rect><rect x="13" y="6" width="3" height="4"></rect><rect x="2" y="2" width="3" height="3"></rect><rect x="11" y="2" width="3" height="3"></rect><rect x="2" y="11" width="3" height="3"></rect><rect x="11" y="11" width="3" height="3"></rect><rect x="3" y="3" width="10" height="10"></rect></g><rect x="6" y="6" width="4" height="4" fill="#211910"></rect></svg><span class="k">ESC</span></a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"mazo":{"editor":"enum","options":["Claro","Oscuro"],"default":"Claro","section":"Cartas"},"$preview":{"width":1280,"height":720}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { deckCls: (this.props.mazo ?? 'Claro') === 'Oscuro' ? 'oscuro' : '' };
+  }
+}
+</script>
+</body>
+</html>
