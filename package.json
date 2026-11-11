@@ -14,7 +14,8 @@
     "build": "node scripts/prepare-assets.mjs && vite build",
     "preview": "vite preview",
     "assets": "node scripts/prepare-assets.mjs",
-    "shots": "node scripts/shots.mjs"
+    "shots": "node scripts/shots.mjs",
+    "deploy": "sh scripts/deploy.sh"
   },
   "license": "MIT",
   "devDependencies": {
